@@ -69,7 +69,7 @@ consultarPreguntas = () => {
 verRespuestas = (pregunta) => {
   const leerPreguntas = preguntas.find(item => normalizarTexto(item.pregunta) === normalizarTexto(pregunta));
   if (!leerPreguntas) return console.log(`La pregunta: ${pregunta}, no existe`);
-  console.log("Respuestas disponibles:", leerPreguntas.respuestas);
+  console.log(pregunta, leerPreguntas.respuestas);
 };
 
 // Responder una pregunta

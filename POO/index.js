@@ -33,7 +33,7 @@ class Question {
     verRespuestas = (pregunta) => {
         const existePregunta = this.data.find(item => item.pregunta === this.#normalizarTexto(pregunta));
         if (!existePregunta) return console.log(`La pregunta: "${pregunta}" no existe..`);
-        console.log(`Respuestas disponibles para "${pregunta}":`, existePregunta.respuestas);
+        console.log(pregunta, existePregunta.respuestas);
     };
 
     responderPregunta = (pregunta, respuestaUsuario) => {
