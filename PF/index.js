@@ -53,7 +53,7 @@ crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
   
   const preguntaData = {
     pregunta: normalizarTexto(pregunta),
-    respuestas: respuestas.map(item => normalizarTexto(item)), 
+    respuestas: respuestas.map(item => normalizarTexto(item)),
     respuestaCorrecta: normalizarTexto(respuestaCorrecta),
   };
   preguntas.push(preguntaData);
