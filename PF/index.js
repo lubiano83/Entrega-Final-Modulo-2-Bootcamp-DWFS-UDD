@@ -1,71 +1,97 @@
-# Proyectos: Gestión de Preguntas y Respuestas
+// Preguntas iniciales
+const preguntas = [
+  {
+    pregunta: "¿Cuál es el planeta más grande del sistema solar?",
+    respuestas: ["Júpiter", "Saturno", "Neptuno", "Urano"],
+    respuestaCorrecta: "Júpiter"
+  },
+  {
+    pregunta: "¿En qué año llegó el hombre a la Luna?",
+    respuestas: ["1969", "1975", "1963", "1970"],
+    respuestaCorrecta: "1969"
+  },
+  {
+    pregunta: "¿Cuál es el lenguaje de programación más utilizado en el mundo?",
+    respuestas: ["Python", "JavaScript", "C++", "Java"],
+    respuestaCorrecta: "JavaScript"
+  },
+  {
+    pregunta: "¿Cuántos colores hay en el arcoíris?",
+    respuestas: ["7", "5", "6", "8"],
+    respuestaCorrecta: "7"
+  },
+  {
+    pregunta: "¿Quién pintó la Mona Lisa?",
+    respuestas: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Claude Monet"],
+    respuestaCorrecta: "Leonardo da Vinci"
+  },
+  {
+    pregunta: "¿Cuál es el animal terrestre más rápido?",
+    respuestas: ["Guepardo", "León", "Antílope", "Caballo"],
+    respuestaCorrecta: "Guepardo"
+  },
+  {
+    pregunta: "¿Qué país tiene la mayor población del mundo?",
+    respuestas: ["India", "Estados Unidos", "China", "Rusia"],
+    respuestaCorrecta: "China"
+  },
+];
 
-## Descripción General
-Ambos proyectos están diseñados para manejar un sistema de preguntas y respuestas, permitiendo crear, consultar y responder preguntas de manera eficiente. Aunque tienen similitudes en cuanto a la funcionalidad principal, existen diferencias clave en su implementación, alcance y objetivos.
+// Función para normalizar texto: convierte a minúsculas y elimina tildes/espacios
+const normalizarTexto = (texto) => {
+  return texto
+    .toLowerCase()
+    .normalize("NFD") // Descompone caracteres con tildes
+    .replace(/[\u0300-\u036f]/g, "") // Elimina los diacríticos (tildes)
+    .trim(); // Elimina espacios adicionales
+};
 
----
+// Crear una pregunta
+crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
+  if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
+  if (typeof pregunta !== "string" || typeof respuestaCorrecta !== "string") return console.log("Los campos deben ser en formato string");
+  
+  const preguntaData = {
+    pregunta: normalizarTexto(pregunta),
+    respuestas: respuestas.map(item => normalizarTexto(item)),
+    respuestaCorrecta: normalizarTexto(respuestaCorrecta),
+  };
+  preguntas.push(preguntaData);
+};
 
-## Proyecto 1: Sistema de Gestión de Preguntas en Clase `Question`
+// Consultar preguntas
+consultarPreguntas = () => {
+  const leerPreguntas = preguntas.map(item => item.pregunta);
+  console.log("Preguntas disponibles", leerPreguntas);
+};
 
-### Finalidad
-Este proyecto utiliza una clase en JavaScript para encapsular la lógica relacionada con la creación y gestión de preguntas y respuestas. La finalidad principal es ofrecer una solución estructurada y reutilizable para manejar sistemas de cuestionarios pequeños o medianos.
+// Ver respuestas
+verRespuestas = (pregunta) => {
+  const leerPreguntas = preguntas.find(item => normalizarTexto(item.pregunta) === normalizarTexto(pregunta));
+  if (!leerPreguntas) return console.log(`La pregunta: ${pregunta}, no existe`);
+  console.log("Respuestas disponibles:", leerPreguntas.respuestas);
+};
 
-### Características
-- Uso de una clase `Question` para encapsular métodos.
-- Métodos para:
-  - Crear preguntas con opciones y una respuesta correcta.
-  - Consultar preguntas existentes.
-  - Ver respuestas disponibles para una pregunta específica.
-  - Verificar si una respuesta es correcta.
-  - Eliminar preguntas del sistema.
-- Enfoque en la organización y modularidad del código.
-- Normalización automática de texto para evitar problemas con tildes, mayúsculas, o espacios adicionales.
+// Responder una pregunta
+responderPregunta = (pregunta, respuestaUsuario) => {
+  const existePregunta = preguntas.find(item => normalizarTexto(item.pregunta) === normalizarTexto(pregunta));
+  if (!existePregunta) return console.log(`La pregunta: ${pregunta}, no existe`);
+  
+  if (existePregunta.respuestaCorrecta === normalizarTexto(respuestaUsuario)) {
+    console.log(`¡Felicitaciones! La respuesta a la pregunta: "${pregunta}", es correcta.`);
+  } else {
+    console.log(`Lo siento, la respuesta a la pregunta: "${pregunta}", es incorrecta. Intenta de nuevo.`);
+  }
+};
 
-### Alcance
-Este sistema está diseñado para ser utilizado principalmente en aplicaciones pequeñas, como pruebas rápidas o cuestionarios educativos.
+// Crear una nueva pregunta
+crearPregunta("¿En qué continente está Egipto?", ["África", "Asia", "Europa", "América"], "África");
 
----
+// Consultar las preguntas disponibles
+consultarPreguntas();
 
-## Proyecto 2: Funciones Globales para Gestión de Preguntas
+// Ver respuestas de una pregunta específica
+verRespuestas("¿En qué continente está Egipto?");
 
-### Finalidad
-Este proyecto implementa funciones globales en lugar de una clase para manejar preguntas y respuestas. El objetivo es proporcionar una solución más sencilla y directa para sistemas que no requieren encapsulación ni modularidad avanzada.
-
-### Características
-- Funciones independientes para:
-  - Crear preguntas.
-  - Consultar preguntas existentes.
-  - Ver opciones de respuesta para una pregunta.
-  - Validar si una respuesta es correcta.
-- Uso de un array global para almacenar las preguntas.
-- Normalización del texto similar al proyecto anterior.
-- Mayor simplicidad y menor nivel de abstracción en comparación con el primer proyecto.
-
-### Alcance
-Ideal para aplicaciones rápidas o prototipos donde no se requiere un diseño extensible o altamente modular.
-
----
-
-## Similitudes entre los Proyectos
-1. **Funcionalidad Principal**: Ambos proyectos permiten crear, consultar, y responder preguntas.
-2. **Normalización de Texto**: Ambos implementan un mecanismo para garantizar que las comparaciones de texto sean consistentes y no se vean afectadas por diferencias en tildes, mayúsculas o espacios.
-3. **Propósito Educativo**: Ambos están diseñados para manejar sistemas de preguntas en contextos como cuestionarios o evaluaciones.
-
----
-
-## Diferencias entre los Proyectos
-| Aspecto                   | Proyecto 1: Clase `Question`                  | Proyecto 2: Funciones Globales           |
-|---------------------------|-----------------------------------------------|------------------------------------------|
-| **Estructura**            | Basado en una clase con métodos encapsulados | Basado en funciones independientes       |
-| **Alcance**               | Ideal para sistemas medianos o modulares     | Adecuado para proyectos pequeños o rápidos |
-| **Escalabilidad**         | Más escalable y extensible                   | Menos escalable debido a la falta de encapsulación |
-| **Organización del Código** | Mayor modularidad y reutilización           | Código más directo pero menos organizado |
-| **Adición de Funciones Nuevas** | Sencillo de extender mediante nuevos métodos | Requiere agregar más funciones globales |
-
----
-
-## Finalidad General del Proyecto
-La finalidad de ambos proyectos es proporcionar una base para la creación de sistemas de gestión de preguntas y respuestas, asegurando:
-- **Eficiencia**: Mediante la normalización del texto y validaciones integradas.
-- **Flexibilidad**: Al permitir diferentes niveles de complejidad según el enfoque utilizado.
-- **Accesibilidad**: Ofreciendo una solución clara y fácil de implementar para diferentes tipos de aplicaciones.
+// Probar responder la pregunta
+responderPregunta("¿En qué continente está Egipto?", "Africa");
