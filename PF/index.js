@@ -52,9 +52,9 @@ crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
   if (typeof pregunta !== "string" || typeof respuestaCorrecta !== "string") return console.log("Los campos deben ser en formato string");
   
   const preguntaData = {
-    pregunta: normalizarTexto(pregunta),
-    respuestas: respuestas.map(item => normalizarTexto(item)),
-    respuestaCorrecta: normalizarTexto(respuestaCorrecta),
+    pregunta: pregunta,
+    respuestas: respuestas.map(item => item),
+    respuestaCorrecta: respuestaCorrecta,
   };
   preguntas.push(preguntaData);
 };
@@ -62,26 +62,26 @@ crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
 // Consultar preguntas
 consultarPreguntas = () => {
   for( let i = 0; i < preguntas.length; i++ ) {
-    console.log(`${i+1}.-`, normalizarTexto(preguntas[i].pregunta));
+    console.log(`${i+1}.-`, preguntas[i].pregunta);
   }
 };
 
 // Ver respuestas
-verRespuestas = (pregunta) => {
-  const leerPreguntas = preguntas.find(item => normalizarTexto(item.pregunta) === normalizarTexto(pregunta));
-  if (!leerPreguntas) return console.log(`La pregunta: ${pregunta}, no existe`);
-  console.log(normalizarTexto(pregunta), leerPreguntas.respuestas);
+verRespuestas = (numero) => {
+  if(!numero || typeof numero !== "number" || numero < 1 || numero > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
+  const leerPregunta = preguntas[numero - 1].pregunta;
+  const leerRespuestas = preguntas[numero - 1].respuestas;
+  console.log(leerPregunta, leerRespuestas);
 };
 
 // Responder una pregunta
-responderPregunta = (pregunta, respuestaUsuario) => {
-  const existePregunta = preguntas.find(item => normalizarTexto(item.pregunta) === normalizarTexto(pregunta));
-  if (!existePregunta) return console.log(`La pregunta: ${pregunta}, no existe`);
-  
-  if (existePregunta.respuestaCorrecta === normalizarTexto(respuestaUsuario)) {
-    console.log(`¡Felicitaciones! La respuesta a la pregunta: "${normalizarTexto(pregunta)}", es correcta.`);
+responderPregunta = (numero, respuestaUsuario) => {
+  if(!numero || typeof numero !== "number" || numero < 1 || numero > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
+  const respuestaCorecta = normalizarTexto(preguntas[numero - 1].respuestaCorrecta);
+  if(respuestaCorecta === respuestaUsuario) {
+    console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numero}, es correcta.`);
   } else {
-    console.log(`Lo siento, la respuesta a la pregunta: "${normalizarTexto(pregunta)}", es incorrecta. Intenta de nuevo.`);
+    console.log(`Lo siento, la respuesta a la pregunta: ${numero}, es incorrecta..`);
   }
 };
 
@@ -92,7 +92,7 @@ crearPregunta("¿En qué continente está Egipto?", ["África", "Asia", "Europa"
 consultarPreguntas();
 
 // Ver respuestas de una pregunta específica
-verRespuestas("¿En qué continente está Egipto?");
+verRespuestas(1);
 
 // Probar responder la pregunta
-responderPregunta("¿En qué continente está Egipto?", "Africa");
+responderPregunta(1, "jupiter");
