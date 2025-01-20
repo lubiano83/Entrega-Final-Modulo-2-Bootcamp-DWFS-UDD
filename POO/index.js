@@ -34,16 +34,16 @@ class Question {
     verRespuestas = (pregunta) => {
         const existePregunta = this.data.find(item => item.pregunta === this.#normalizarTexto(pregunta));
         if (!existePregunta) return console.log(`La pregunta: "${pregunta}" no existe..`);
-        console.log(pregunta, existePregunta.respuestas);
+        console.log(this.#normalizarTexto(pregunta), existePregunta.respuestas);
     };
 
     responderPregunta = (pregunta, respuestaUsuario) => {
         const existePregunta = this.data.find(item => item.pregunta === this.#normalizarTexto(pregunta));
         if (!existePregunta) return console.log(`La pregunta: "${pregunta}" no existe`);
         if (existePregunta.respuestaCorrecta === this.#normalizarTexto(respuestaUsuario)) {
-            console.log(`¡Felicitaciones! La respuesta a la pregunta: "${pregunta}" es correcta.`);
+            console.log(`¡Felicitaciones! La respuesta a la pregunta: "${this.#normalizarTexto(pregunta)}" es correcta.`);
         } else {
-            console.log(`Lo siento, la respuesta a la pregunta: "${pregunta}" es incorrecta. Intenta de nuevo.`);
+            console.log(`Lo siento, la respuesta a la pregunta: "${this.#normalizarTexto(pregunta)}" es incorrecta. Intenta de nuevo.`);
         }
     };
 }
