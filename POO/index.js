@@ -18,9 +18,9 @@ class Question {
         }
 
         const preguntaData = {
-            pregunta: this.#normalizarTexto(pregunta),
-            respuestas: respuestas.map(item => this.#normalizarTexto(item)),
-            respuestaCorrecta: this.#normalizarTexto(respuestaCorrecta),
+            pregunta: pregunta,
+            respuestas: respuestas.map(item => item),
+            respuestaCorrecta: respuestaCorrecta,
         };
         this.data.push(preguntaData);
     };
@@ -31,19 +31,22 @@ class Question {
         }
     };
 
-    verRespuestas = (pregunta) => {
-        const existePregunta = this.data.find(item => item.pregunta === this.#normalizarTexto(pregunta));
-        if (!existePregunta) return console.log(`La pregunta: "${pregunta}" no existe..`);
-        console.log(this.#normalizarTexto(pregunta), existePregunta.respuestas);
+    // Ver respuestas
+    verRespuestas = (numeroPregunta) => {
+        if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.data.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.data.length}`);
+        const leerPregunta = this.data[numeroPregunta - 1].pregunta;
+        const leerRespuestas = this.data[numeroPregunta - 1].respuestas;
+        console.log(leerPregunta, leerRespuestas);
     };
 
-    responderPregunta = (pregunta, respuestaUsuario) => {
-        const existePregunta = this.data.find(item => item.pregunta === this.#normalizarTexto(pregunta));
-        if (!existePregunta) return console.log(`La pregunta: "${pregunta}" no existe`);
-        if (existePregunta.respuestaCorrecta === this.#normalizarTexto(respuestaUsuario)) {
-            console.log(`¡Felicitaciones! La respuesta a la pregunta: "${this.#normalizarTexto(pregunta)}" es correcta.`);
+    // Responder una pregunta
+    responderPregunta = (numeroPregunta, respuestaUsuario) => {
+        if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.data.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.data.length}`);
+        const respuestaCorecta = this.#normalizarTexto(this.data[numeroPregunta - 1].respuestaCorrecta);
+        if(respuestaCorecta === respuestaUsuario) {
+        console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
         } else {
-            console.log(`Lo siento, la respuesta a la pregunta: "${this.#normalizarTexto(pregunta)}" es incorrecta. Intenta de nuevo.`);
+        console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
         }
     };
 }
@@ -65,11 +68,11 @@ question.crearPregunta("¿En qué continente está Egipto?", ["África", "Asia",
 question.consultarPreguntas();
 
 // Consultar respuestas y responder preguntas
-question.verRespuestas("¿Cuál es el lenguaje de programación más utilizado en el mundo?");
-question.responderPregunta("¿Cuál es el lenguaje de programación más utilizado en el mundo?", "Python");
+question.verRespuestas(3);
+question.responderPregunta(3, "javascript");
 
-question.verRespuestas("¿Qué país tiene la mayor población del mundo?");
-question.responderPregunta("¿Qué país tiene la mayor población del mundo?", "India");
+question.verRespuestas(7);
+question.responderPregunta(7, "India");
 
-question.verRespuestas("¿En qué año llegó el hombre a la Luna?");
-question.responderPregunta("¿En qué año llegó el hombre a la Luna?", "1969");
+question.verRespuestas(2);
+question.responderPregunta(2, "1969");

@@ -67,21 +67,21 @@ consultarPreguntas = () => {
 };
 
 // Ver respuestas
-verRespuestas = (numero) => {
-  if(!numero || typeof numero !== "number" || numero < 1 || numero > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
-  const leerPregunta = preguntas[numero - 1].pregunta;
-  const leerRespuestas = preguntas[numero - 1].respuestas;
+verRespuestas = (numeroPregunta) => {
+  if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
+  const leerPregunta = preguntas[numeroPregunta - 1].pregunta;
+  const leerRespuestas = preguntas[numeroPregunta - 1].respuestas;
   console.log(leerPregunta, leerRespuestas);
 };
 
 // Responder una pregunta
-responderPregunta = (numero, respuestaUsuario) => {
-  if(!numero || typeof numero !== "number" || numero < 1 || numero > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
-  const respuestaCorecta = normalizarTexto(preguntas[numero - 1].respuestaCorrecta);
+responderPregunta = (numeroPregunta, respuestaUsuario) => {
+  if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
+  const respuestaCorecta = normalizarTexto(preguntas[numeroPregunta - 1].respuestaCorrecta);
   if(respuestaCorecta === respuestaUsuario) {
-    console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numero}, es correcta.`);
+    console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
   } else {
-    console.log(`Lo siento, la respuesta a la pregunta: ${numero}, es incorrecta..`);
+    console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
   }
 };
 
