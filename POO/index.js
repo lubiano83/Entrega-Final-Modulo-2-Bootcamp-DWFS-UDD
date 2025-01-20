@@ -26,8 +26,9 @@ class Question {
     };
 
     consultarPreguntas = () => {
-        const leerPreguntas = this.data.map(item => item.pregunta);
-        console.log("Preguntas disponibles:", leerPreguntas);
+        for( let i = 0; i < this.data.length; i++ ) {
+            console.log(`${i+1}.-`, this.data[i].pregunta);
+        }
     };
 
     verRespuestas = (pregunta) => {

@@ -61,8 +61,9 @@ crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
 
 // Consultar preguntas
 consultarPreguntas = () => {
-  const leerPreguntas = preguntas.map(item => item.pregunta);
-  console.log("Preguntas disponibles", leerPreguntas);
+  for( let i = 0; i < preguntas.length; i++ ) {
+    console.log(`${i+1}.-`, preguntas[i].pregunta);
+  }
 };
 
 // Ver respuestas
