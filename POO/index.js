@@ -1,8 +1,10 @@
 class Question {
+    // Contructor
     constructor() {
         this.data = [];
     }
 
+    // Normalizar texto
     #normalizarTexto = (texto) => {
         try {
             return texto
@@ -15,6 +17,7 @@ class Question {
         }
     };
 
+    // Crear pregunta
     crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
         try {
             if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
@@ -30,6 +33,7 @@ class Question {
         }
     };
 
+    // Consultar preguntas
     consultarPreguntas = () => {
         try {
             for( let i = 0; i < this.data.length; i++ ) {
@@ -72,7 +76,7 @@ class Question {
 // Crear instancia de la clase
 const question = new Question();
 
-// Agregar preguntas
+// Agregar pregunta
 question.crearPregunta("¿Cuál es el planeta más grande del sistema solar?", ["Júpiter", "Saturno", "Neptuno", "Urano"], "Júpiter");
 question.crearPregunta("¿En qué año llegó el hombre a la Luna?", ["1969", "1975", "1963", "1970"], "1969");
 question.crearPregunta("¿Cuál es el lenguaje de programación más utilizado en el mundo?", ["Python", "JavaScript", "C++", "Java"], "JavaScript");
@@ -85,14 +89,14 @@ question.crearPregunta("¿En qué continente está Egipto?", ["África", "Asia",
 // Consultar preguntas
 question.consultarPreguntas();
 
-// Consultar respuestas y responder preguntas
+// Consultar respuestas y responder pregunta
 question.verRespuestas(3);
 question.responderPregunta(3, "javascript");
 
-// Consultar respuestas y responder preguntas
+// Consultar respuestas y responder pregunta
 question.verRespuestas(7);
 question.responderPregunta(7, "India");
 
-// Consultar respuestas y responder preguntas
+// Consultar respuestas y responder pregunta
 question.verRespuestas(2);
 question.responderPregunta(2, "1969");
