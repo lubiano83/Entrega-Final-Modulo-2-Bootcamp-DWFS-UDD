@@ -39,11 +39,15 @@ const preguntas = [
 
 // Función para normalizar texto: convierte a minúsculas y elimina tildes/espacios
 const normalizarTexto = (texto) => {
-  return texto
-    .toLowerCase()
-    .normalize("NFD") // Descompone caracteres con tildes
-    .replace(/[\u0300-\u036f]/g, "") // Elimina los diacríticos (tildes)
-    .trim(); // Elimina espacios adicionales
+  try {
+    return texto
+      .toLowerCase()
+      .normalize("NFD") // Descompone caracteres con tildes
+      .replace(/[\u0300-\u036f]/g, "") // Elimina los diacríticos (tildes)
+      .trim(); // Elimina espacios adicionales
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 // Crear una pregunta
@@ -107,8 +111,6 @@ crearPregunta("¿En qué continente está Egipto?", ["África", "Asia", "Europa"
 // Consultar las preguntas disponibles
 consultarPreguntas();
 
-// Ver respuestas de una pregunta específica
+// Ver respuestas de una pregunta específica y responder
 verRespuestas(1);
-
-// Probar responder la pregunta
 responderPregunta(1, "jupiter");

@@ -4,11 +4,15 @@ class Question {
     }
 
     #normalizarTexto = (texto) => {
-        return texto
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .trim();
+        try {
+            return texto
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .trim();
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
     crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
@@ -85,8 +89,10 @@ question.consultarPreguntas();
 question.verRespuestas(3);
 question.responderPregunta(3, "javascript");
 
+// Consultar respuestas y responder preguntas
 question.verRespuestas(7);
 question.responderPregunta(7, "India");
 
+// Consultar respuestas y responder preguntas
 question.verRespuestas(2);
 question.responderPregunta(2, "1969");
