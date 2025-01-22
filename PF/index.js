@@ -38,7 +38,7 @@ const preguntas = [
 ];
 
 // Función para normalizar texto: convierte a minúsculas y elimina tildes/espacios
-const normalizarTexto = (texto) => {
+function normalizarTexto(texto) {
   try {
     return texto
       .toLowerCase()
@@ -51,7 +51,7 @@ const normalizarTexto = (texto) => {
 };
 
 // Crear una pregunta
-crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
+const crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
   try {
     if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
     if (typeof pregunta !== "string" || typeof respuestaCorrecta !== "string" || !Array.isArray(respuestas)) return console.log("Los campos deben tener el formato correcto");
@@ -67,7 +67,7 @@ crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
 };
 
 // Consultar preguntas
-consultarPreguntas = () => {
+const consultarPreguntas = function() {
   try {
     for( let i = 0; i < preguntas.length; i++ ) {
       console.log(`${i+1}.-`, preguntas[i].pregunta);
@@ -78,7 +78,7 @@ consultarPreguntas = () => {
 };
 
 // Ver respuestas
-verRespuestas = (numeroPregunta) => {
+const verRespuestas = (numeroPregunta) => {
   try {
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const leerPregunta = preguntas[numeroPregunta - 1].pregunta;
@@ -90,7 +90,7 @@ verRespuestas = (numeroPregunta) => {
 };
 
 // Responder una pregunta
-responderPregunta = (numeroPregunta, respuestaUsuario) => {
+const responderPregunta = (numeroPregunta, respuestaUsuario) => {
   try {
     if(typeof respuestaUsuario !== "string" || !respuestaUsuario) return console.log("Este campo es requerido y debe ser de tipo string..");
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);

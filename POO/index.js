@@ -5,7 +5,7 @@ class Question {
     }
 
     // Normalizar texto
-    #normalizarTexto = (texto) => {
+    #normalizarTexto(texto) {
         try {
             return texto
                 .toLowerCase()
@@ -34,7 +34,7 @@ class Question {
     };
 
     // Consultar preguntas
-    consultarPreguntas = () => {
+    consultarPreguntas = function() {
         try {
             for( let i = 0; i < this.data.length; i++ ) {
                 console.log(`${i+1}.-`, this.data[i].pregunta);
