@@ -82,7 +82,7 @@ class Question {
     // Mostrar resultados de respuestas
     mostrarResultadoRespuestas = () => {
         try {
-            console.log(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas..`);
+            console.log(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas, de un total de ${this.data.length} preguntas..`);
         } catch (error) {
             console.log(error.message);
         }
