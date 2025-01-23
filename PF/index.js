@@ -1,3 +1,4 @@
+// Variables
 let countTrue = 0;
 let countFalse = 0;
 const respuestasUsuario = [];
