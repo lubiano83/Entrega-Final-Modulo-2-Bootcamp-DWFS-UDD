@@ -1,71 +1,131 @@
-# Proyectos: Gestión de Preguntas y Respuestas
+# Sistema de Gestión de Preguntas y Respuestas
 
 ## Descripción General
-Ambos proyectos están diseñados para manejar un sistema de preguntas y respuestas, permitiendo crear, consultar y responder preguntas de manera eficiente. Aunque tienen similitudes en cuanto a la funcionalidad principal, existen diferencias clave en su implementación, alcance y objetivos.
+Este proyecto está diseñado para manejar un sistema de preguntas y respuestas, permitiendo crear, consultar y responder preguntas de manera eficiente. Incluye dos enfoques diferentes: mediante funciones globales o utilizando una clase en JavaScript.
 
----
+## Características Principales
 
-## Proyecto 1: Sistema de Gestión de Preguntas en Clase `Question`
+1. **Crear Preguntas:** Permite agregar preguntas con opciones y una respuesta correcta.
+2. **Consultar Preguntas:** Lista todas las preguntas existentes en el sistema.
+3. **Ver Respuestas:** Muestra las opciones disponibles para una pregunta específica.
+4. **Responder Preguntas:** Permite al usuario responder una pregunta y valida si la respuesta es correcta.
+5. **Normalización de Texto:** Garantiza que las comparaciones de texto sean consistentes eliminando tildes, mayúsculas y espacios adicionales.
+6. **Resultados de Respuestas:** Muestra un resumen con la cantidad de respuestas correctas e incorrectas realizadas por el usuario.
+7. **Respuestas Emitidas por el Usuario:** Permite visualizar todas las respuestas proporcionadas por el usuario durante el cuestionario.
 
-### Finalidad
-Este proyecto utiliza una clase en JavaScript para encapsular la lógica relacionada con la creación y gestión de preguntas y respuestas. La finalidad principal es ofrecer una solución estructurada y reutilizable para manejar sistemas de cuestionarios pequeños o medianos.
+## Nuevas Funcionalidades Agregadas
 
-### Características
-- Uso de una clase `Question` para encapsular métodos.
-- Métodos para:
-  - Crear preguntas con opciones y una respuesta correcta.
-  - Consultar preguntas existentes.
-  - Ver respuestas disponibles para una pregunta específica.
-  - Verificar si una respuesta es correcta.
-  - Eliminar preguntas del sistema.
-- Enfoque en la organización y modularidad del código.
-- Normalización automática de texto para evitar problemas con tildes, mayúsculas, o espacios adicionales.
+### mostrarResultadoRespuestas
+Este método muestra un resumen del desempeño del usuario en el cuestionario, indicando el número total de respuestas correctas e incorrectas.
 
-### Alcance
-Este sistema está diseñado para ser utilizado principalmente en aplicaciones pequeñas, como pruebas rápidas o cuestionarios educativos.
+#### Ejemplo de Uso:
+```javascript
+question.mostrarResultadoRespuestas();
+// Salida: Hubo un total de X respuestas correctas y Y de respuestas incorrectas.
+```
 
----
+### mostrarRespuestasUsuario
+Este método permite visualizar todas las respuestas que el usuario ha emitido durante el cuestionario.
 
-## Proyecto 2: Funciones Globales para Gestión de Preguntas
+#### Ejemplo de Uso:
+```javascript
+question.mostrarRespuestasUsuario();
+// Salida: ["respuesta1", "respuesta2", "respuesta3"]
+```
 
-### Finalidad
-Este proyecto implementa funciones globales en lugar de una clase para manejar preguntas y respuestas. El objetivo es proporcionar una solución más sencilla y directa para sistemas que no requieren encapsulación ni modularidad avanzada.
+## Programación Funcional y Orientada a Objetos
 
-### Características
-- Funciones independientes para:
-  - Crear preguntas.
-  - Consultar preguntas existentes.
-  - Ver opciones de respuesta para una pregunta.
-  - Validar si una respuesta es correcta.
-- Uso de un array global para almacenar las preguntas.
-- Normalización del texto similar al proyecto anterior.
-- Mayor simplicidad y menor nivel de abstracción en comparación con el primer proyecto.
+Este proyecto se puede implementar utilizando dos paradigmas principales: **Programación Funcional** y **Programación Orientada a Objetos**. A continuación, se describen ambos enfoques, junto con sus fortalezas, debilidades y cuándo utilizarlos.
 
-### Alcance
-Ideal para aplicaciones rápidas o prototipos donde no se requiere un diseño extensible o altamente modular.
+### Programación Funcional
+En este enfoque, las funciones independientes se utilizan para manejar el estado y la lógica del sistema. El proyecto implementa funciones globales para crear y gestionar preguntas.
 
----
+#### Características
+- Uso de funciones puras e independientes.
+- Estado manejado mediante variables globales.
+- Código más simple y directo.
 
-## Similitudes entre los Proyectos
-1. **Funcionalidad Principal**: Ambos proyectos permiten crear, consultar, y responder preguntas.
-2. **Normalización de Texto**: Ambos implementan un mecanismo para garantizar que las comparaciones de texto sean consistentes y no se vean afectadas por diferencias en tildes, mayúsculas o espacios.
-3. **Propósito Educativo**: Ambos están diseñados para manejar sistemas de preguntas en contextos como cuestionarios o evaluaciones.
+#### Fortalezas
+- Fácil de implementar y entender para proyectos pequeños.
+- Bajo nivel de abstracción, ideal para prototipos.
+- Menor consumo de recursos debido a su simplicidad.
 
----
+#### Debilidades
+- Escalabilidad limitada: manejar múltiples funcionalidades puede complicar el código.
+- Dificultad para organizar y reutilizar el código en proyectos grandes.
 
-## Diferencias entre los Proyectos
-| Aspecto                   | Proyecto 1: Clase `Question`                  | Proyecto 2: Funciones Globales           |
-|---------------------------|-----------------------------------------------|------------------------------------------|
-| **Estructura**            | Basado en una clase con métodos encapsulados | Basado en funciones independientes       |
-| **Alcance**               | Ideal para sistemas medianos o modulares     | Adecuado para proyectos pequeños o rápidos |
-| **Escalabilidad**         | Más escalable y extensible                   | Menos escalable debido a la falta de encapsulación |
-| **Organización del Código** | Mayor modularidad y reutilización           | Código más directo pero menos organizado |
-| **Adición de Funciones Nuevas** | Sencillo de extender mediante nuevos métodos | Requiere agregar más funciones globales |
+#### Mejor uso
+- **Proyectos pequeños o prototipos.**
+- Aplicaciones con funcionalidades limitadas y sin necesidad de modularidad avanzada.
 
----
+### Programación Orientada a Objetos
+En este enfoque, se utiliza una clase `Question` que encapsula los métodos y el estado relacionados con las preguntas y respuestas.
 
-## Finalidad General del Proyecto
-La finalidad de ambos proyectos es proporcionar una base para la creación de sistemas de gestión de preguntas y respuestas, asegurando:
-- **Eficiencia**: Mediante la normalización del texto y validaciones integradas.
-- **Flexibilidad**: Al permitir diferentes niveles de complejidad según el enfoque utilizado.
-- **Accesibilidad**: Ofreciendo una solución clara y fácil de implementar para diferentes tipos de aplicaciones.
+#### Características
+- Uso de clases y métodos para estructurar el código.
+- Encapsulación de datos y funciones.
+- Modularidad y reutilización de componentes.
+
+#### Fortalezas
+- Escalable y modular, ideal para proyectos medianos o grandes.
+- Fácil de extender agregando nuevos métodos o funcionalidades.
+- Organización del código clara y orientada a objetos.
+
+#### Debilidades
+- Más complejo de implementar inicialmente.
+- Requiere mayor planificación del diseño del sistema.
+
+#### Mejor uso
+- **Proyectos medianos o grandes.**
+- Aplicaciones que requieren escalabilidad y modularidad.
+- Sistemas con lógica compleja o alta reutilización de componentes.
+
+## Ejemplo de Uso
+
+### Creación de una Pregunta
+```javascript
+question.crearPregunta("¿Cuál es el planeta más grande del sistema solar?", ["Júpiter", "Saturno", "Neptuno", "Urano"], "Júpiter");
+```
+
+### Consultar Preguntas
+```javascript
+question.consultarPreguntas();
+// Salida: Lista numerada de preguntas.
+```
+
+### Ver Respuestas de una Pregunta
+```javascript
+question.verRespuestas(1);
+// Salida: Pregunta y sus opciones de respuesta.
+```
+
+### Responder una Pregunta
+```javascript
+question.responderPregunta(1, "Júpiter");
+// Salida: Indica si la respuesta es correcta o incorrecta.
+```
+
+### Mostrar Resultados
+```javascript
+question.mostrarResultadoRespuestas();
+```
+
+### Mostrar Respuestas del Usuario
+```javascript
+question.mostrarRespuestasUsuario();
+```
+
+## Diferencias entre Enfoques
+
+### Clase `Question`
+- Más escalable y modular.
+- Encapsulación de métodos y datos.
+- Ideal para sistemas medianos o grandes.
+
+### Funciones Globales
+- Simplicidad en la implementación.
+- Menos modularidad.
+- Ideal para prototipos o proyectos pequeños.
+
+## Finalidad
+Proporcionar una base para crear sistemas de gestión de preguntas y respuestas con flexibilidad, eficiencia y accesibilidad según las necesidades del proyecto.

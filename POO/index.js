@@ -78,6 +78,8 @@ class Question {
             console.log(error.message);
         }
     };
+
+    // Mostrar resultados de respuestas
     mostrarResultadoRespuestas = () => {
         try {
             console.log(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas..`);
@@ -86,6 +88,7 @@ class Question {
         }
     };
     
+    // Mostrar las respuestas emitidas
     mostrarRespuestasUsuario = () => {
         try {
             console.log(respuestasUsuario);

@@ -112,6 +112,7 @@ const responderPregunta = (numeroPregunta, respuestaUsuario) => {
   }
 };
 
+// Mostrar resultados de respuestas
 const mostrarResultadoRespuestas = () => {
   try {
     console.log(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas..`);
@@ -120,6 +121,7 @@ const mostrarResultadoRespuestas = () => {
   }
 };
 
+// Mostrar las respuestas emitidas
 const mostrarRespuestasUsuario = () => {
   try {
       console.log(respuestasUsuario);
