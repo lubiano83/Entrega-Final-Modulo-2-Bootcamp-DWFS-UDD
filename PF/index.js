@@ -41,19 +41,6 @@ const preguntas = [
   },
 ];
 
-// Función para normalizar texto: convierte a minúsculas y elimina tildes/espacios
-function normalizarTexto(texto) {
-  try {
-    return texto
-      .toLowerCase()
-      .normalize("NFD") // Descompone caracteres con tildes
-      .replace(/[\u0300-\u036f]/g, "") // Elimina los diacríticos (tildes)
-      .trim(); // Elimina espacios adicionales
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
 // Crear una pregunta
 const crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
   try {
