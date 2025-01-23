@@ -1,26 +1,14 @@
 class Question {
+
     // Variables Privadas
     #countTrue = 0;
     #countFalse = 0;
 
     // Constructor
     constructor() {
-        this.data = [];
+        this.preguntas = [];
         this.respuestasUsuario = [];
     }
-
-    // Normalizar texto
-    #normalizarTexto(texto) {
-        try {
-            return texto
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .trim();
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
 
     // Crear pregunta
     crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
@@ -28,7 +16,7 @@ class Question {
             if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
             if (typeof pregunta !== "string" || !Array.isArray(respuestas) || typeof respuestaCorrecta !== "string") return console.log("Los campos deben tener el formato correcto");    
             const preguntaData = { pregunta, respuestas, respuestaCorrecta };
-            this.data.push(preguntaData);
+            this.preguntas.push(preguntaData);
         } catch (error) {
             console.log(error.message);
         }
@@ -37,8 +25,8 @@ class Question {
     // Consultar preguntas
     consultarPreguntas = function() {
         try {
-            for( let i = 0; i < this.data.length; i++ ) {
-                console.log(`${i+1}.-`, this.data[i].pregunta);
+            for( let i = 0; i < this.preguntas.length; i++ ) {
+                console.log(`${i+1}.-`, this.preguntas[i].pregunta);
             }
         } catch (error) {
             console.log(error.message);
@@ -48,21 +36,25 @@ class Question {
     // Ver respuestas
     verRespuestas = (numeroPregunta) => {
         try {
-            if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.data.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.data.length}`);
-            const leerPregunta = this.data[numeroPregunta - 1].pregunta;
-            const leerRespuestas = this.data[numeroPregunta - 1].respuestas;
-            console.log(leerPregunta, leerRespuestas);
+            if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
+            const leerPregunta = this.preguntas[numeroPregunta - 1].pregunta;
+            const leerRespuestas = this.preguntas[numeroPregunta - 1].respuestas;
+            console.log(leerPregunta);
+            for( let i = 0; i < leerRespuestas.length; i++ ) {
+                console.log(`${i+1}.-`, this.preguntas[numeroPregunta - 1].respuestas[i]);
+            }
         } catch (error) {
             console.log(error.message);
         }
     };
 
     // Responder una pregunta
-    responderPregunta = (numeroPregunta, respuestaUsuario) => {
+    responderPregunta = (numeroPregunta, numeroRespuesta) => {
         try {
-            if(typeof respuestaUsuario !== "string" || !respuestaUsuario) return console.log("Este campo es requerido y debe ser de tipo string..");
-            if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.data.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.data.length}`);
-            const respuestaCorecta = this.#normalizarTexto(this.data[numeroPregunta - 1].respuestaCorrecta);
+            if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > this.preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas[numeroPregunta - 1].respuestas.length}..`);
+            if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
+            const respuestaCorecta = this.preguntas[numeroPregunta - 1].respuestaCorrecta;
+            const respuestaUsuario = this.preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
             if(respuestaCorecta === respuestaUsuario) {
                 this.#countTrue++;
                 console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
@@ -79,7 +71,7 @@ class Question {
     // Mostrar resultados de respuestas
     mostrarResultadoRespuestas = () => {
         try {
-            console.log(`Hubo un total de ${this.#countTrue} respuestas correctas y ${this.#countFalse} de respuestas incorrectas, de un total de ${this.data.length} preguntas..`);
+            console.log(`Hubo un total de ${this.#countTrue} respuestas correctas y ${this.#countFalse} de respuestas incorrectas, de un total de ${this.preguntas.length} preguntas..`);
         } catch (error) {
             console.log(error.message);
         }
@@ -113,15 +105,15 @@ question.consultarPreguntas();
 
 // Consultar respuestas y responder pregunta
 question.verRespuestas(3);
-question.responderPregunta(3, "javascript");
+question.responderPregunta(3, 1);
 
 // Consultar respuestas y responder pregunta
 question.verRespuestas(7);
-question.responderPregunta(7, "India");
+question.responderPregunta(7, 3);
 
 // Consultar respuestas y responder pregunta
 question.verRespuestas(2);
-question.responderPregunta(2, "1969");
+question.responderPregunta(2, 1);
 
 // Mostrar cantidad de respuestas correctas e incorrectas
 question.mostrarResultadoRespuestas();

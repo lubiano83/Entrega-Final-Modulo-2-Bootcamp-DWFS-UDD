@@ -83,28 +83,32 @@ const verRespuestas = (numeroPregunta) => {
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const leerPregunta = preguntas[numeroPregunta - 1].pregunta;
     const leerRespuestas = preguntas[numeroPregunta - 1].respuestas;
-    console.log(leerPregunta, leerRespuestas);
+    console.log(leerPregunta);
+    for( let i = 0; i < leerRespuestas.length; i++ ) {
+        console.log(`${i+1}.-`, preguntas[numeroPregunta - 1].respuestas[i]);
+    }
   } catch (error) {
-    console.log(error.message);
+      console.log(error.message);
   }
 };
 
 // Responder una pregunta
-const responderPregunta = (numeroPregunta, respuestaUsuario) => {
+const responderPregunta = (numeroPregunta, numeroRespuesta) => {
   try {
-    if(typeof respuestaUsuario !== "string" || !respuestaUsuario) return console.log("Este campo es requerido y debe ser de tipo string..");
+    if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}..`);
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
-    const respuestaCorecta = normalizarTexto(preguntas[numeroPregunta - 1].respuestaCorrecta);
+    const respuestaCorecta = preguntas[numeroPregunta - 1].respuestaCorrecta;
+    const respuestaUsuario = preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
     if(respuestaCorecta === respuestaUsuario) {
-      countTrue++;
-      console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
+        countTrue++;
+        console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
     } else {
-      countFalse++;
-      console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
+        countFalse++;
+        console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
     }
     respuestasUsuario.push(respuestaUsuario);
   } catch (error) {
-    console.log(error.message);
+      console.log(error.message);
   }
 };
 
@@ -134,7 +138,7 @@ consultarPreguntas();
 
 // Ver respuestas de una pregunta específica y responder
 verRespuestas(1);
-responderPregunta(1, "jupiter");
+responderPregunta(1, 1);
 
 // Mostrar cantidad de respuestas correctas e incorrectas
 mostrarResultadoRespuestas();
