@@ -1,3 +1,5 @@
+let count = 0;
+
 class Question {
     // Contructor
     constructor() {
@@ -63,10 +65,12 @@ class Question {
             if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.data.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.data.length}`);
             const respuestaCorecta = this.#normalizarTexto(this.data[numeroPregunta - 1].respuestaCorrecta);
             if(respuestaCorecta === respuestaUsuario) {
-            console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
+                count++;
+                console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
             } else {
-            console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
+                console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
             }
+            console.log(`Hubo un total de ${count} respuestas correctas y ${this.data.length - count} de respuestas incorrectas..`);
         } catch (error) {
             console.log(error.message);
         }

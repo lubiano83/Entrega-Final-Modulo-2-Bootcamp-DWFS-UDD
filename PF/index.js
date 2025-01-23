@@ -37,6 +37,8 @@ const preguntas = [
   },
 ];
 
+let count = 0;
+
 // Función para normalizar texto: convierte a minúsculas y elimina tildes/espacios
 function normalizarTexto(texto) {
   try {
@@ -96,10 +98,12 @@ const responderPregunta = (numeroPregunta, respuestaUsuario) => {
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const respuestaCorecta = normalizarTexto(preguntas[numeroPregunta - 1].respuestaCorrecta);
     if(respuestaCorecta === respuestaUsuario) {
+      count++;
       console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
     } else {
       console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
     }
+    console.log(`Hubo un total de ${count} respuestas correctas y ${preguntas.length - count} de respuestas incorrectas..`)
   } catch (error) {
     console.log(error.message);
   }
