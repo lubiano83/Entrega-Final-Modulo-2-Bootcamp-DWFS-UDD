@@ -59,11 +59,7 @@ const crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
   try {
     if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
     if (typeof pregunta !== "string" || typeof respuestaCorrecta !== "string" || !Array.isArray(respuestas)) return console.log("Los campos deben tener el formato correcto");
-    const preguntaData = {
-      pregunta: pregunta,
-      respuestas: respuestas.map(item => item),
-      respuestaCorrecta: respuestaCorrecta,
-    };
+    const preguntaData = { pregunta, respuestas, respuestaCorrecta };
     preguntas.push(preguntaData);
   } catch (error) {
     console.log(error.message);

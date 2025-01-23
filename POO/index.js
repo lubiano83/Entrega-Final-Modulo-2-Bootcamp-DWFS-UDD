@@ -27,11 +27,7 @@ class Question {
         try {
             if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
             if (typeof pregunta !== "string" || !Array.isArray(respuestas) || typeof respuestaCorrecta !== "string") return console.log("Los campos deben tener el formato correcto");    
-            const preguntaData = {
-                pregunta: pregunta,
-                respuestas: respuestas.map(item => item),
-                respuestaCorrecta: respuestaCorrecta,
-            };
+            const preguntaData = { pregunta, respuestas, respuestaCorrecta };
             this.data.push(preguntaData);
         } catch (error) {
             console.log(error.message);
