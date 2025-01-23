@@ -1,3 +1,7 @@
+let countTrue = 0;
+let countFalse = 0;
+const respuestasUsuario = [];
+
 // Preguntas iniciales
 const preguntas = [
   {
@@ -36,8 +40,6 @@ const preguntas = [
     respuestaCorrecta: "China"
   },
 ];
-
-let count = 0;
 
 // Función para normalizar texto: convierte a minúsculas y elimina tildes/espacios
 function normalizarTexto(texto) {
@@ -98,14 +100,31 @@ const responderPregunta = (numeroPregunta, respuestaUsuario) => {
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const respuestaCorecta = normalizarTexto(preguntas[numeroPregunta - 1].respuestaCorrecta);
     if(respuestaCorecta === respuestaUsuario) {
-      count++;
+      countTrue++;
       console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
     } else {
+      countFalse++;
       console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
     }
-    console.log(`Hubo un total de ${count} respuestas correctas y ${preguntas.length - count} de respuestas incorrectas..`)
+    respuestasUsuario.push(respuestaUsuario);
   } catch (error) {
     console.log(error.message);
+  }
+};
+
+const mostrarResultadoRespuestas = () => {
+  try {
+    console.log(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas..`);
+  } catch (error) {
+      console.log(error.message);
+  }
+};
+
+const mostrarRespuestasUsuario = () => {
+  try {
+      console.log(respuestasUsuario);
+  } catch (error) {
+      console.log(error.message);
   }
 };
 
@@ -118,3 +137,9 @@ consultarPreguntas();
 // Ver respuestas de una pregunta específica y responder
 verRespuestas(1);
 responderPregunta(1, "jupiter");
+
+// Mostrar cantidad de respuestas correctas e incorrectas
+mostrarResultadoRespuestas();
+
+// Mostrar Array con listado de respuestas del usuario
+mostrarRespuestasUsuario();

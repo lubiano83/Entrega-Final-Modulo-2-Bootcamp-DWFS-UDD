@@ -1,4 +1,6 @@
-let count = 0;
+let countTrue = 0;
+let countFalse = 0;
+const respuestasUsuario = [];
 
 class Question {
     // Contructor
@@ -65,12 +67,28 @@ class Question {
             if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.data.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.data.length}`);
             const respuestaCorecta = this.#normalizarTexto(this.data[numeroPregunta - 1].respuestaCorrecta);
             if(respuestaCorecta === respuestaUsuario) {
-                count++;
+                countTrue++;
                 console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
             } else {
+                countFalse++;
                 console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
             }
-            console.log(`Hubo un total de ${count} respuestas correctas y ${this.data.length - count} de respuestas incorrectas..`);
+            respuestasUsuario.push(respuestaUsuario);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+    mostrarResultadoRespuestas = () => {
+        try {
+            console.log(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas..`);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+    
+    mostrarRespuestasUsuario = () => {
+        try {
+            console.log(respuestasUsuario);
         } catch (error) {
             console.log(error.message);
         }
@@ -104,3 +122,9 @@ question.responderPregunta(7, "India");
 // Consultar respuestas y responder pregunta
 question.verRespuestas(2);
 question.responderPregunta(2, "1969");
+
+// Mostrar cantidad de respuestas correctas e incorrectas
+question.mostrarResultadoRespuestas();
+
+// Mostrar Array con listado de respuestas del usuario
+question.mostrarRespuestasUsuario();
