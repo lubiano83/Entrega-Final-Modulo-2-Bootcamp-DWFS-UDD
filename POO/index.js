@@ -1,11 +1,10 @@
-let countTrue = 0;
-let countFalse = 0;
-const respuestasUsuario = [];
-
 class Question {
     // Contructor
     constructor() {
         this.data = [];
+        this.respuestasUsuario = [];
+        this.countTrue = 0;
+        this.countFalse = 0;
     }
 
     // Normalizar texto
@@ -67,13 +66,13 @@ class Question {
             if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.data.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.data.length}`);
             const respuestaCorecta = this.#normalizarTexto(this.data[numeroPregunta - 1].respuestaCorrecta);
             if(respuestaCorecta === respuestaUsuario) {
-                countTrue++;
+                this.countTrue++;
                 console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
             } else {
-                countFalse++;
+                this.countFalse++;
                 console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
             }
-            respuestasUsuario.push(respuestaUsuario);
+            this.respuestasUsuario.push(respuestaUsuario);
         } catch (error) {
             console.log(error.message);
         }
@@ -82,7 +81,7 @@ class Question {
     // Mostrar resultados de respuestas
     mostrarResultadoRespuestas = () => {
         try {
-            console.log(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas, de un total de ${this.data.length} preguntas..`);
+            console.log(`Hubo un total de ${this.countTrue} respuestas correctas y ${this.countFalse} de respuestas incorrectas, de un total de ${this.data.length} preguntas..`);
         } catch (error) {
             console.log(error.message);
         }
@@ -91,7 +90,7 @@ class Question {
     // Mostrar las respuestas emitidas
     mostrarRespuestasUsuario = () => {
         try {
-            console.log(respuestasUsuario);
+            console.log(this.respuestasUsuario);
         } catch (error) {
             console.log(error.message);
         }
