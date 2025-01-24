@@ -14,7 +14,7 @@ class Question {
     crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
         try {
             if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
-            if (typeof pregunta !== "string" || !Array.isArray(respuestas) || typeof respuestaCorrecta !== "string") return console.log("Los campos deben tener el formato correcto");    
+            if (typeof pregunta !== "string" || !Array.isArray(respuestas) || typeof respuestaCorrecta !== "string") return console.log("Los campos deben tener el formato correcto");  
             const preguntaData = { pregunta, respuestas, respuestaCorrecta };
             this.preguntas.push(preguntaData);
         } catch (error) {
@@ -80,7 +80,7 @@ class Question {
     // Mostrar las respuestas emitidas
     mostrarRespuestasUsuario = () => {
         try {
-            console.log(this.respuestasUsuario);
+            console.log("Respuestas del usuario:", this.respuestasUsuario);
         } catch (error) {
             console.log(error.message);
         }
