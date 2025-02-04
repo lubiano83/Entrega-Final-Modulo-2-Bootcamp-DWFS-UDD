@@ -80,7 +80,10 @@ class Question {
     // Mostrar las respuestas emitidas
     mostrarRespuestasUsuario = () => {
         try {
-            console.log("Respuestas del usuario:", this.respuestasUsuario);
+            console.log("Respuestas del usuario:");
+            for( let i = 0; i < this.respuestasUsuario.length; i++ ) {
+                console.log(`${i+1}.-`, this.respuestasUsuario[i]);
+            }
         } catch (error) {
             console.log(error.message);
         }

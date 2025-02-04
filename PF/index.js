@@ -112,7 +112,10 @@ const mostrarResultadoRespuestas = () => {
 // Mostrar las respuestas emitidas
 const mostrarRespuestasUsuario = () => {
   try {
-      console.log("Respuestas del usuario:", respuestasUsuario);
+    console.log("Respuestas del usuario:");
+    for( let i = 0; i < respuestasUsuario.length; i++ ) {
+        console.log(`${i+1}.-`, respuestasUsuario[i]);
+    }
   } catch (error) {
       console.log(error.message);
   }
