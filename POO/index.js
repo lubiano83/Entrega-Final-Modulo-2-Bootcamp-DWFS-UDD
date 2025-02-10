@@ -13,7 +13,7 @@ class Question {
     // Crear pregunta
     crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
         try {
-            if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
+            if (!pregunta || respuestas.length === 0 || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
             if (typeof pregunta !== "string" || !Array.isArray(respuestas) || typeof respuestaCorrecta !== "string") return console.log("Los campos deben tener el formato correcto");  
             const preguntaData = { pregunta, respuestas, respuestaCorrecta };
             this.preguntas.push(preguntaData);
@@ -25,42 +25,48 @@ class Question {
     // Consultar preguntas
     consultarPreguntas = function() {
         try {
+            if (this.preguntas.length === 0) document.getElementById("output").innerHTML = "<h3>No hay preguntas disponibles...</h3>"
+            let pregunta = [];
             for( let i = 0; i < this.preguntas.length; i++ ) {
-                console.log(`${i+1}.-`, this.preguntas[i].pregunta);
+                pregunta.push(`${i+1}.- ${this.preguntas[i].pregunta}`);
             }
+            document.getElementById("output").innerHTML = pregunta.join("<br>");
         } catch (error) {
             console.log(error.message);
         }
     };
 
     // Ver respuestas
-    verRespuestas = (numeroPregunta) => {
+    verRespuestas = () => {
         try {
-            if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
-            const leerPregunta = this.preguntas[numeroPregunta - 1].pregunta;
+            const numeroPregunta = parseInt(prompt("Ingresa el numero de la pregunta"));
+            if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
             const leerRespuestas = this.preguntas[numeroPregunta - 1].respuestas;
-            console.log(leerPregunta);
+            let respuesta = [];
             for( let i = 0; i < leerRespuestas.length; i++ ) {
-                console.log(`${i+1}.-`, this.preguntas[numeroPregunta - 1].respuestas[i]);
+                respuesta.push(` ${i+1}.- ${this.preguntas[numeroPregunta - 1].respuestas[i]}`);
             }
+            alert(respuesta)
         } catch (error) {
             console.log(error.message);
         }
     };
 
     // Responder una pregunta
-    responderPregunta = (numeroPregunta, numeroRespuesta) => {
+    responderPregunta = () => {
         try {
+            const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
+            const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
             if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > this.preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas[numeroPregunta - 1].respuestas.length}..`);
             if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
             const respuestaCorecta = this.preguntas[numeroPregunta - 1].respuestaCorrecta;
             const respuestaUsuario = this.preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
             if(respuestaCorecta === respuestaUsuario) {
                 this.#countTrue++;
-                console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
+                alert(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
             } else {
                 this.#countFalse++;
-                console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
+                alert(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
             }
             this.respuestasUsuario.push(respuestaUsuario);
         } catch (error) {
@@ -71,7 +77,7 @@ class Question {
     // Mostrar resultados de respuestas
     mostrarResultadoRespuestas = () => {
         try {
-            console.log(`Hubo un total de ${this.#countTrue} respuestas correctas y ${this.#countFalse} de respuestas incorrectas, de un total de ${this.preguntas.length} preguntas..`);
+            alert(`Hubo un total de ${this.#countTrue} respuestas correctas y ${this.#countFalse} de respuestas incorrectas, de un total de ${this.preguntas.length} preguntas..`);
         } catch (error) {
             console.log(error.message);
         }
@@ -80,10 +86,13 @@ class Question {
     // Mostrar las respuestas emitidas
     mostrarRespuestasUsuario = () => {
         try {
+            let respuesta = [];
             console.log("Respuestas del usuario:");
             for( let i = 0; i < this.respuestasUsuario.length; i++ ) {
-                console.log(`${i+1}.-`, this.respuestasUsuario[i]);
+                respuesta.push(`${i+1}.- ${this.respuestasUsuario[i]}`);
             }
+            if(respuesta.length == 0) return alert("Aun no respondes ninguna pregunta..");
+            alert(respuesta)
         } catch (error) {
             console.log(error.message);
         }
@@ -106,20 +115,8 @@ question.crearPregunta("¿En qué continente está Egipto?", ["África", "Asia",
 // Consultar preguntas
 question.consultarPreguntas();
 
-// Consultar respuestas y responder pregunta
-question.verRespuestas(3);
-question.responderPregunta(3, 1);
-
-// Consultar respuestas y responder pregunta
-question.verRespuestas(7);
-question.responderPregunta(7, 3);
-
-// Consultar respuestas y responder pregunta
-question.verRespuestas(2);
-question.responderPregunta(2, 1);
-
-// Mostrar cantidad de respuestas correctas e incorrectas
-question.mostrarResultadoRespuestas();
-
-// Mostrar Array con listado de respuestas del usuario
-question.mostrarRespuestasUsuario();
+// Conexion con HTML
+document.getElementById("verRespuestas").addEventListener("click", () => question.verRespuestas());
+document.getElementById("responderPregunta").addEventListener("click", () => question.responderPregunta());
+document.getElementById("resultadoRespuestas").addEventListener("click", () => question.mostrarResultadoRespuestas());
+document.getElementById("respuestasUsuario").addEventListener("click", () => question.mostrarRespuestasUsuario());
