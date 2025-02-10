@@ -130,6 +130,6 @@ question.mostrarRespuestasUsuario();
 ## Finalidad
 Proporcionar una base para crear sistemas de gestión de preguntas y respuestas con flexibilidad, eficiencia y accesibilidad según las necesidades del proyecto.
 
-## Pagina
+## Link Página
 
 https://lubiano83.github.io/Entrega-Final-Modulo-2-Bootcamp-DWFS-UDD/
