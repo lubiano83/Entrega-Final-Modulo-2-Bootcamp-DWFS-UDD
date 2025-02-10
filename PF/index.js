@@ -45,7 +45,7 @@ const preguntas = [
 // Crear una pregunta
 const crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
   try {
-    if (!pregunta || !respuestas || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
+    if (!pregunta || respuestas.length === 0 || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
     if (typeof pregunta !== "string" || typeof respuestaCorrecta !== "string" || !Array.isArray(respuestas)) return console.log("Los campos deben tener el formato correcto");
     const preguntaData = { pregunta, respuestas, respuestaCorrecta };
     preguntas.push(preguntaData);
@@ -57,67 +57,75 @@ const crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
 // Consultar preguntas
 const consultarPreguntas = function() {
   try {
+    if (preguntas.length === 0) document.getElementById("output").innerHTML = "<h3>No hay preguntas disponibles...</h3>"
+    let pregunta = [];
     for( let i = 0; i < preguntas.length; i++ ) {
-      console.log(`${i+1}.-`, preguntas[i].pregunta);
+      pregunta.push(`${i+1}.- ${preguntas[i].pregunta}`);
     }
+    document.getElementById("output").innerHTML = pregunta.join("<br>");
   } catch (error) {
     console.log(error.message);
   }
 };
 
 // Ver respuestas
-const verRespuestas = (numeroPregunta) => {
+const verRespuestas = () => {
   try {
-    if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
-    const leerPregunta = preguntas[numeroPregunta - 1].pregunta;
+    const numeroPregunta = parseInt(prompt("Ingresa el numero de la pregunta"));
+    if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const leerRespuestas = preguntas[numeroPregunta - 1].respuestas;
-    console.log(leerPregunta);
+    let respuesta = [];
     for( let i = 0; i < leerRespuestas.length; i++ ) {
-        console.log(`${i+1}.-`, preguntas[numeroPregunta - 1].respuestas[i]);
+      respuesta.push(` ${i+1}.- ${preguntas[numeroPregunta - 1].respuestas[i]}`);
     }
+    alert(respuesta)
   } catch (error) {
-      console.log(error.message);
+    console.log(error.message);
   }
 };
 
 // Responder una pregunta
-const responderPregunta = (numeroPregunta, numeroRespuesta) => {
+const responderPregunta = () => {
   try {
+    const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
+    const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
     if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}..`);
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const respuestaCorecta = preguntas[numeroPregunta - 1].respuestaCorrecta;
     const respuestaUsuario = preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
     if(respuestaCorecta === respuestaUsuario) {
-        countTrue++;
-        console.log(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
+      countTrue++;
+      alert(`¡Felicitaciones! La respuesta a la pregunta: ${numeroPregunta}, es correcta.`);
     } else {
-        countFalse++;
-        console.log(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
+      countFalse++;
+      alert(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
     }
     respuestasUsuario.push(respuestaUsuario);
   } catch (error) {
-      console.log(error.message);
+    console.log(error.message);
   }
 };
 
 // Mostrar resultados de respuestas
 const mostrarResultadoRespuestas = () => {
   try {
-    console.log(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas, de un total de ${preguntas.length} preguntas..`);
+    alert(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas, de un total de ${preguntas.length} preguntas..`);
   } catch (error) {
-      console.log(error.message);
+    console.log(error.message);
   }
 };
 
 // Mostrar las respuestas emitidas
 const mostrarRespuestasUsuario = () => {
   try {
-    console.log("Respuestas del usuario:");
+    let respuesta = [];
     for( let i = 0; i < respuestasUsuario.length; i++ ) {
-        console.log(`${i+1}.-`, respuestasUsuario[i]);
+      respuesta.push(`${i+1}.- ${respuestasUsuario[i]}`);
     }
+    if(respuesta.length == 0) return alert("Aun no respondes ninguna pregunta..");
+    alert(respuesta);
   } catch (error) {
-      console.log(error.message);
+    console.log(error.message);
   }
 };
 
@@ -127,12 +135,8 @@ crearPregunta("¿En qué continente está Egipto?", ["África", "Asia", "Europa"
 // Consultar las preguntas disponibles
 consultarPreguntas();
 
-// Ver respuestas de una pregunta específica y responder
-verRespuestas(1);
-responderPregunta(1, 1);
-
-// Mostrar cantidad de respuestas correctas e incorrectas
-mostrarResultadoRespuestas();
-
-// Mostrar Array con listado de respuestas del usuario
-mostrarRespuestasUsuario();
+// Conexion con HTML
+document.getElementById("verRespuestas").addEventListener("click", () => verRespuestas());
+document.getElementById("responderPregunta").addEventListener("click", () => responderPregunta());
+document.getElementById("resultadoRespuestas").addEventListener("click", () => mostrarResultadoRespuestas());
+document.getElementById("respuestasUsuario").addEventListener("click", () => mostrarRespuestasUsuario());

@@ -87,12 +87,11 @@ class Question {
     mostrarRespuestasUsuario = () => {
         try {
             let respuesta = [];
-            console.log("Respuestas del usuario:");
             for( let i = 0; i < this.respuestasUsuario.length; i++ ) {
                 respuesta.push(`${i+1}.- ${this.respuestasUsuario[i]}`);
             }
             if(respuesta.length == 0) return alert("Aun no respondes ninguna pregunta..");
-            alert(respuesta)
+            alert(respuesta);
         } catch (error) {
             console.log(error.message);
         }
