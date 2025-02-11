@@ -12,11 +12,13 @@ body {
 body .title {
     text-decoration: underline;
     font-style: italic;
+    text-align: center;
 }
 
 body #output {
     font-size: x-large;
     margin-bottom: 30px;
+    font-weight: lighter;
 }
 
 body div {
@@ -47,6 +49,5 @@ body a .btn {
     font-size: large;
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
-    font-weight: lighter;
     margin: 10px;
 }

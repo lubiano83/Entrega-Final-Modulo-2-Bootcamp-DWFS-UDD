@@ -13,6 +13,8 @@ body {
 
 body .title {
     text-decoration: underline;
+    font-style: italic;
+    text-align: center;
 }
 
 body div {
