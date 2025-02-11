@@ -116,8 +116,8 @@ const mostrarResultadoRespuestas = () => {
     alert(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas, de un total de ${preguntas.length} preguntas..`);
   if(preguntas.length === preguntaRealizada.length) {
     if(countTrue === preguntas.length) alert("Felicitaciones, eres un genio!!");
-    if(countTrue >= (preguntas.length / 2) && countTrue < preguntas.length) alert("Felicitaciones, aprobaste el examen!!");
-    if(countTrue < (preguntas.length / 2)) alert("Lo siento, acabas de reprobar el examen..");
+    if(countTrue > (preguntas.length / 2) && countTrue < preguntas.length) alert("Felicitaciones, aprobaste el examen!!");
+    if(countTrue <= (preguntas.length / 2)) alert("Lo siento, acabas de reprobar el examen..");
   }
   } catch (error) {
     console.log(error.message);
