@@ -111,14 +111,14 @@ class Question {
 const question = new Question();
 
 // Agregar pregunta
-question.crearPregunta("¿Cuál es el planeta más grande del sistema solar?", ["Júpiter", "Saturno", "Neptuno", "Urano"], "Júpiter");
-question.crearPregunta("¿En qué año llegó el hombre a la Luna?", ["1969", "1975", "1963", "1970"], "1969");
-question.crearPregunta("¿Cuál es el lenguaje de programación más utilizado en el mundo?", ["Python", "JavaScript", "C++", "Java"], "JavaScript");
-question.crearPregunta("¿Cuántos colores hay en el arcoíris?", ["7", "5", "6", "8"], "7");
-question.crearPregunta("¿Quién pintó la Mona Lisa?", ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Claude Monet"], "Leonardo da Vinci");
-question.crearPregunta("¿Cuál es el animal terrestre más rápido?", ["Guepardo", "León", "Antílope", "Caballo"], "Guepardo");
-question.crearPregunta("¿Qué país tiene la mayor población del mundo?", ["India", "Estados Unidos", "China", "Rusia"], "China");
-question.crearPregunta("¿En qué continente está Egipto?", ["África", "Asia", "Europa", "América"], "África");
+question.crearPregunta("¿Cuál de los siguientes métodos se usa para recorrer un array en JavaScript?", ["forEach", "map", "filter", "Todas las anteriores"], "Todas las anteriores");
+question.crearPregunta("¿Qué función se usa para convertir un string en un número entero en JavaScript?", ["parseFloat", "parseInt", "Number", "toFixed"], "parseInt");
+question.crearPregunta("¿Cuál es el resultado de `typeof null` en JavaScript?", ["null", "object", "undefined", "number"], "object");
+question.crearPregunta("¿Cuál de estos no es un tipo de dato en JavaScript?", ["String", "Boolean", "Float", "Symbol"], "Float");
+question.crearPregunta("¿Qué palabra clave se usa para declarar una variable que no puede ser reasignada?", ["var", "let", "const", "static"], "const");
+question.crearPregunta("¿Cuál es el operador de comparación estricta en JavaScript?", ["==", "!=", "===", "!=="], "===");
+question.crearPregunta("¿Cómo se define una función en JavaScript?", ["function miFuncion() {}", "const miFuncion = function() {}", "const miFuncion = () => {}", "Todas las anteriores"], "Todas las anteriores");
+question.crearPregunta("¿Cuál de estas afirmaciones sobre `let` y `var` es correcta?", ["`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función", "`var` y `let` tienen el mismo alcance", "`let` permite redeclarar una variable en el mismo ámbito", "`var` no permite hoisting"], "`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función");
 
 // Consultar preguntas
 question.consultarPreguntas();
