@@ -5,8 +5,8 @@ body {
     flex-direction: column; 
     justify-content: center; 
     align-items: center;
-    background-color: #48A6A7;
-    color: #F2EFE7;
+    background-color: #3E7B27;
+    color: #EFE3C2;
 }
 
 body .title {
@@ -21,9 +21,21 @@ body #output {
 
 body div .btn {
     border: 2;
-    border-color: #2973B2;
-    background-color: #9ACBD0;
-    color: #2973B2;
+    border-color: #123524;
+    background-color: #85A947;
+    color: #123524;
+    font-size: large;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+    font-weight: lighter;
+    margin: 10px;
+}
+
+body a .btn {
+    border: 2;
+    border-color: #123524;
+    background-color: #85A947;
+    color: #123524;
     font-size: large;
     border-radius: 10px;
     padding: 5px 10px 5px 10px;

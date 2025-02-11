@@ -82,6 +82,11 @@ class Question {
     mostrarResultadoRespuestas = () => {
         try {
             alert(`Hubo un total de ${this.#countTrue} respuestas correctas y ${this.#countFalse} de respuestas incorrectas, de un total de ${this.preguntas.length} preguntas..`);
+            if(this.preguntas.length === this.preguntaRealizada.length) {
+                if(this.#countTrue === this.preguntas.length) alert("Felicitaciones, eres un genio!!");
+                if(this.#countTrue >= (this.preguntas.length / 2) && countTrue < this.preguntas.length) alert("Felicitaciones, aprobaste el examen!!");
+                if(this.#countTrue < (this.preguntas.length / 2)) alert("Lo siento, acabas de reprobar el examen..");
+            }
         } catch (error) {
             console.log(error.message);
         }
