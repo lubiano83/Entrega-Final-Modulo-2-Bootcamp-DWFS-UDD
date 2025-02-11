@@ -89,8 +89,8 @@ const responderPregunta = () => {
   try {
     const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
     const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
-    if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}..`);
-    if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return console.log(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
+    if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}..`);
+    if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const respuestaCorecta = preguntas[numeroPregunta - 1].respuestaCorrecta;
     const respuestaUsuario = preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
     if(respuestaCorecta === respuestaUsuario) {
