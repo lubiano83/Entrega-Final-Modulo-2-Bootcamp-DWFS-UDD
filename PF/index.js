@@ -5,42 +5,47 @@ const preguntaRealizada = [];
 const respuestasUsuario = [];
 
 // Preguntas iniciales
-const preguntas = [
+const preguntasJS = [
   {
-    pregunta: "¿Cuál es el planeta más grande del sistema solar?",
-    respuestas: ["Júpiter", "Saturno", "Neptuno", "Urano"],
-    respuestaCorrecta: "Júpiter"
+    pregunta: "¿Cuál de los siguientes métodos se usa para recorrer un array en JavaScript?",
+    respuestas: ["forEach", "map", "filter", "Todas las anteriores"],
+    respuestaCorrecta: "Todas las anteriores"
   },
   {
-    pregunta: "¿En qué año llegó el hombre a la Luna?",
-    respuestas: ["1969", "1975", "1963", "1970"],
-    respuestaCorrecta: "1969"
+    pregunta: "¿Qué función se usa para convertir un string en un número entero en JavaScript?",
+    respuestas: ["parseFloat", "parseInt", "Number", "toFixed"],
+    respuestaCorrecta: "parseInt"
   },
   {
-    pregunta: "¿Cuál es el lenguaje de programación más utilizado en el mundo?",
-    respuestas: ["Python", "JavaScript", "C++", "Java"],
-    respuestaCorrecta: "JavaScript"
+    pregunta: "¿Cuál es el resultado de `typeof null` en JavaScript?",
+    respuestas: ["null", "object", "undefined", "number"],
+    respuestaCorrecta: "object"
   },
   {
-    pregunta: "¿Cuántos colores hay en el arcoíris?",
-    respuestas: ["7", "5", "6", "8"],
-    respuestaCorrecta: "7"
+    pregunta: "¿Cuál de estos no es un tipo de dato en JavaScript?",
+    respuestas: ["String", "Boolean", "Float", "Symbol"],
+    respuestaCorrecta: "Float"
   },
   {
-    pregunta: "¿Quién pintó la Mona Lisa?",
-    respuestas: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Claude Monet"],
-    respuestaCorrecta: "Leonardo da Vinci"
+    pregunta: "¿Qué palabra clave se usa para declarar una variable que no puede ser reasignada?",
+    respuestas: ["var", "let", "const", "static"],
+    respuestaCorrecta: "const"
   },
   {
-    pregunta: "¿Cuál es el animal terrestre más rápido?",
-    respuestas: ["Guepardo", "León", "Antílope", "Caballo"],
-    respuestaCorrecta: "Guepardo"
+    pregunta: "¿Cuál es el operador de comparación estricta en JavaScript?",
+    respuestas: ["==", "!=", "===", "!=="],
+    respuestaCorrecta: "==="
   },
   {
-    pregunta: "¿Qué país tiene la mayor población del mundo?",
-    respuestas: ["India", "Estados Unidos", "China", "Rusia"],
-    respuestaCorrecta: "China"
-  },
+    pregunta: "¿Cómo se define una función en JavaScript?",
+    respuestas: [
+      "function miFuncion() {}",
+      "const miFuncion = function() {}",
+      "const miFuncion = () => {}",
+      "Todas las anteriores"
+    ],
+    respuestaCorrecta: "Todas las anteriores"
+  }
 ];
 
 // Crear una pregunta
@@ -139,7 +144,11 @@ const mostrarRespuestasUsuario = () => {
 };
 
 // Crear una nueva pregunta
-crearPregunta("¿En qué continente está Egipto?", ["África", "Asia", "Europa", "América"], "África");
+crearPregunta("¿Cuál de estas afirmaciones sobre `let` y `var` es correcta?", [
+      "`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función",
+      "`var` y `let` tienen el mismo alcance",
+      "`let` permite redeclarar una variable en el mismo ámbito",
+      "`var` no permite hoisting"], "`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función");
 
 // Consultar las preguntas disponibles
 consultarPreguntas();
