@@ -7,46 +7,87 @@ const respuestasUsuario = [];
 // Preguntas iniciales
 const preguntas = [
   {
-    pregunta: "¿Cuál de los siguientes métodos se usa para recorrer un array en JavaScript?",
-    respuestas: ["forEach", "map", "filter", "Todas las anteriores"],
-    respuestaCorrecta: "Todas las anteriores"
-  },
-  {
-    pregunta: "¿Qué función se usa para convertir un string en un número entero en JavaScript?",
-    respuestas: ["parseFloat", "parseInt", "Number", "toFixed"],
-    respuestaCorrecta: "parseInt"
-  },
-  {
-    pregunta: "¿Cuál es el resultado de `typeof null` en JavaScript?",
-    respuestas: ["null", "object", "undefined", "number"],
-    respuestaCorrecta: "object"
-  },
-  {
-    pregunta: "¿Cuál de estos no es un tipo de dato en JavaScript?",
-    respuestas: ["String", "Boolean", "Float", "Symbol"],
-    respuestaCorrecta: "Float"
-  },
-  {
-    pregunta: "¿Qué palabra clave se usa para declarar una variable que no puede ser reasignada?",
-    respuestas: ["var", "let", "const", "static"],
-    respuestaCorrecta: "const"
-  },
-  {
-    pregunta: "¿Cuál es el operador de comparación estricta en JavaScript?",
-    respuestas: ["==", "!=", "===", "!=="],
-    respuestaCorrecta: "==="
-  },
-  {
-    pregunta: "¿Cómo se define una función en JavaScript?",
+    pregunta: "¿Qué devuelve el método `Array.prototype.map()`?",
     respuestas: [
-      "function miFuncion() {}",
-      "const miFuncion = function() {}",
-      "const miFuncion = () => {}",
-      "Todas las anteriores"
+      "Un nuevo array con los elementos transformados",
+      "El mismo array modificado",
+      "La cantidad de elementos en el array",
+      "undefined"
     ],
-    respuestaCorrecta: "Todas las anteriores"
+    respuestaCorrecta: "Un nuevo array con los elementos transformados"
+  },
+  {
+    pregunta: "¿Cuál es el propósito del método `JSON.stringify()`?",
+    respuestas: [
+      "Convertir un objeto en una cadena JSON",
+      "Convertir una cadena JSON en un objeto",
+      "Clonar un objeto",
+      "Convertir un número en una cadena"
+    ],
+    respuestaCorrecta: "Convertir un objeto en una cadena JSON"
+  },
+  {
+    pregunta: "¿Cómo se puede evitar modificar un objeto en JavaScript?",
+    respuestas: [
+      "Usando `Object.freeze()`",
+      "Usando `const`",
+      "Usando `Object.preventChanges()`",
+      "No se puede evitar"
+    ],
+    respuestaCorrecta: "Usando `Object.freeze()`"
+  },
+  {
+    pregunta: "¿Cuál de las siguientes estructuras permite manejar errores en JavaScript?",
+    respuestas: [
+      "try...catch",
+      "if...else",
+      "for...of",
+      "switch...case"
+    ],
+    respuestaCorrecta: "try...catch"
+  },
+  {
+    pregunta: "¿Qué operador se usa para la propagación de arrays u objetos?",
+    respuestas: [
+      "=>",
+      "...",
+      "??",
+      "&&"
+    ],
+    respuestaCorrecta: "..."
+  },
+  {
+    pregunta: "¿Cuál es la salida de `console.log(2 + '2')` en JavaScript?",
+    respuestas: [
+      "4",
+      "22",
+      "NaN",
+      "undefined"
+    ],
+    respuestaCorrecta: "22"
+  },
+  {
+    pregunta: "¿Cuál de las siguientes afirmaciones sobre `async` y `await` es correcta?",
+    respuestas: [
+      "`await` solo puede usarse dentro de funciones `async`",
+      "`async` hace que una función se ejecute más rápido",
+      "`await` solo funciona con `setTimeout`",
+      "`async` y `await` son sinónimos"
+    ],
+    respuestaCorrecta: "`await` solo puede usarse dentro de funciones `async`"
+  },
+  {
+    pregunta: "¿Qué evento del DOM se usa para detectar cuando un usuario ha terminado de escribir en un input?",
+    respuestas: [
+      "keydown",
+      "keypress",
+      "keyup",
+      "input"
+    ],
+    respuestaCorrecta: "keyup"
   }
 ];
+
 
 // Crear una pregunta
 const crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
@@ -144,7 +185,7 @@ const mostrarRespuestasUsuario = () => {
 };
 
 // Crear una nueva pregunta
-crearPregunta("¿Cuál de estas afirmaciones sobre `let` y `var` es correcta?", ["`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función", "`var` y `let` tienen el mismo alcance", "`let` permite redeclarar una variable en el mismo ámbito", "`var` no permite hoisting"], "`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función");
+crearPregunta("¿Qué evento del DOM se usa para detectar cuando un usuario ha terminado de escribir en un input?", ["keydown", "keypress", "keyup", "input"], "keyup");
 
 // Consultar las preguntas disponibles
 consultarPreguntas();
