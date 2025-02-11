@@ -5,7 +5,7 @@ const preguntaRealizada = [];
 const respuestasUsuario = [];
 
 // Preguntas iniciales
-const preguntasJS = [
+const preguntas = [
   {
     pregunta: "¿Cuál de los siguientes métodos se usa para recorrer un array en JavaScript?",
     respuestas: ["forEach", "map", "filter", "Todas las anteriores"],
@@ -144,11 +144,7 @@ const mostrarRespuestasUsuario = () => {
 };
 
 // Crear una nueva pregunta
-crearPregunta("¿Cuál de estas afirmaciones sobre `let` y `var` es correcta?", [
-      "`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función",
-      "`var` y `let` tienen el mismo alcance",
-      "`let` permite redeclarar una variable en el mismo ámbito",
-      "`var` no permite hoisting"], "`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función");
+crearPregunta("¿Cuál de estas afirmaciones sobre `let` y `var` es correcta?", ["`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función", "`var` y `let` tienen el mismo alcance", "`let` permite redeclarar una variable en el mismo ámbito", "`var` no permite hoisting"], "`let` tiene un alcance de bloque, mientras que `var` tiene un alcance de función");
 
 // Consultar las preguntas disponibles
 consultarPreguntas();
