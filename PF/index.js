@@ -90,7 +90,7 @@ const responderPregunta = () => {
   try {
     const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
     const existePregunta = preguntaRealizada.some(num => num === numeroPregunta);
-    if(existePregunta) return alert("Esa pregunta ya se realizo..");
+    if(existePregunta) return alert("Lo siento, esa pregunta ya se realizo..");
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
     if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}`);

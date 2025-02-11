@@ -7,15 +7,15 @@ class Question {
     // Constructor
     constructor() {
         this.preguntas = [];
-        this.respuestasUsuario = [];
         this.preguntaRealizada = [];
+        this.respuestasUsuario = [];
     }
 
     // Crear pregunta
     crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
         try {
             if (!pregunta || respuestas.length === 0 || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
-            if (typeof pregunta !== "string" || !Array.isArray(respuestas) || typeof respuestaCorrecta !== "string") return console.log("Los campos deben tener el formato correcto");  
+            if (typeof pregunta !== "string" || !Array.isArray(respuestas) || typeof respuestaCorrecta !== "string") return console.log("Los campos deben tener el formato correcto");
             const preguntaData = { pregunta, respuestas, respuestaCorrecta };
             this.preguntas.push(preguntaData);
         } catch (error) {
@@ -58,7 +58,7 @@ class Question {
         try {
             const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
             const existePregunta = this.preguntaRealizada.some(num => num === numeroPregunta);
-            if(existePregunta) return alert("Esa pregunta ya se realizo..");
+            if(existePregunta) return alert("Lo siento, esa pregunta ya se realizo..");
             if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
             const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
             if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > this.preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas[numeroPregunta - 1].respuestas.length}`);
