@@ -1,6 +1,7 @@
 // Variables
 let countTrue = 0;
 let countFalse = 0;
+const preguntaRealizada = [];
 const respuestasUsuario = [];
 
 // Preguntas iniciales
@@ -88,6 +89,8 @@ const verRespuestas = () => {
 const responderPregunta = () => {
   try {
     const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
+    const existePregunta = preguntaRealizada.some(num => num === numeroPregunta);
+    if(existePregunta) return alert("Esa pregunta ya se realizo..");
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
     if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}`);
@@ -100,6 +103,7 @@ const responderPregunta = () => {
       countFalse++;
       alert(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
     }
+    preguntaRealizada.push(numeroPregunta);
     respuestasUsuario.push(respuestaUsuario);
   } catch (error) {
     console.log(error.message);

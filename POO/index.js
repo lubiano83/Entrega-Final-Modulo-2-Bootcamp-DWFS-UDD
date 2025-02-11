@@ -8,6 +8,7 @@ class Question {
     constructor() {
         this.preguntas = [];
         this.respuestasUsuario = [];
+        this.preguntaRealizada = [];
     }
 
     // Crear pregunta
@@ -56,6 +57,8 @@ class Question {
     responderPregunta = () => {
         try {
             const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
+            const existePregunta = this.preguntaRealizada.some(num => num === numeroPregunta);
+            if(existePregunta) return alert("Esa pregunta ya se realizo..");
             if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
             const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
             if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > this.preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas[numeroPregunta - 1].respuestas.length}`);
@@ -68,6 +71,7 @@ class Question {
                 this.#countFalse++;
                 alert(`Lo siento, la respuesta a la pregunta: ${numeroPregunta}, es incorrecta..`);
             }
+            this.preguntaRealizada.push(numeroPregunta);
             this.respuestasUsuario.push(respuestaUsuario);
         } catch (error) {
             console.log(error.message);
