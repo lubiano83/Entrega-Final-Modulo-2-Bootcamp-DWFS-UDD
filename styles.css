@@ -15,6 +15,13 @@ body .title {
     text-decoration: underline;
 }
 
+body div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 body div a {
     display: inline-block;
     margin: 0;

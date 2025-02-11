@@ -19,6 +19,13 @@ body #output {
     margin-bottom: 30px;
 }
 
+body div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 body div .btn {
     border: 2;
     border-color: #2973B2;
