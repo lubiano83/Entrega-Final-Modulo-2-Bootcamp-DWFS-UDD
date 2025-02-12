@@ -41,7 +41,7 @@ body div .btn {
     margin: 10px;
 }
 
-body a .btn {
+body div a .btn {
     border: 2;
     border-color: #2973B2;
     background-color: #9ACBD0;

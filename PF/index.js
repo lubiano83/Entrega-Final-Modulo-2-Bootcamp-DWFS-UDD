@@ -184,6 +184,14 @@ const mostrarRespuestasUsuario = () => {
   }
 };
 
+const enviarPrueba = () => {
+  if(respuestasUsuario.length === preguntas.length) {
+    alert("Prueba enviada con exito!!");
+  } else {
+    alert("Primero debes finalizar todas las preguntas..");
+  }
+};
+
 // Crear una nueva pregunta
 crearPregunta("¿Qué evento del DOM se usa para detectar cuando un usuario ha terminado de escribir en un input?", ["keydown", "keypress", "keyup", "input"], "keyup");
 
@@ -195,3 +203,4 @@ document.getElementById("verRespuestas").addEventListener("click", () => verResp
 document.getElementById("responderPregunta").addEventListener("click", () => responderPregunta());
 document.getElementById("resultadoRespuestas").addEventListener("click", () => mostrarResultadoRespuestas());
 document.getElementById("respuestasUsuario").addEventListener("click", () => mostrarRespuestasUsuario());
+document.getElementById("enviarPrueba").addEventListener("click", () => enviarPrueba());

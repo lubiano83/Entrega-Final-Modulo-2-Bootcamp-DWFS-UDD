@@ -105,6 +105,18 @@ class Question {
             console.log(error.message);
         }
     };
+
+    enviarPrueba = () => {
+        try {
+            if(this.respuestasUsuario.length === this.preguntas.length) {
+              alert("Prueba enviada con exito!!");
+            } else {
+              alert("Primero debes finalizar todas las preguntas..");
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 }
 
 // Crear instancia de la clase
@@ -128,3 +140,4 @@ document.getElementById("verRespuestas").addEventListener("click", () => questio
 document.getElementById("responderPregunta").addEventListener("click", () => question.responderPregunta());
 document.getElementById("resultadoRespuestas").addEventListener("click", () => question.mostrarResultadoRespuestas());
 document.getElementById("respuestasUsuario").addEventListener("click", () => question.mostrarRespuestasUsuario());
+document.getElementById("enviarPrueba").addEventListener("click", () => question.enviarPrueba());
