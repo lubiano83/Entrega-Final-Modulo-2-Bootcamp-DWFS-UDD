@@ -178,16 +178,18 @@ const mostrarRespuestasUsuario = () => {
 const enviarPrueba = () => {
   try {
     if(respuestasUsuario.length === preguntas.length) {
-        const emailUsuario = prompt("Ingresa tu email para enviar la prueba");
-        const conffirmarEmail = pruebaEnviada.some(item => item === emailUsuario);
-        if(conffirmarEmail){
-          alert("Tu prueba ya se envio anteriormente..")
-        } else {
-          alert("Prueba enviada con exito!!");
-          pruebaEnviada.push(emailUsuario);
-          respuestasUsuario = [];
-          preguntaRealizada = [];
-        }
+      const emailUsuario = prompt("Ingresa tu email para enviar la prueba");
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailUsuario)) return alert("Debes ingresar un email válido..");
+      const conffirmarEmail = pruebaEnviada.some(item => item === emailUsuario);
+      if(conffirmarEmail){
+        alert("Tu prueba ya se envio anteriormente..")
+      } else {
+        alert("Prueba enviada con exito!!");
+        pruebaEnviada.push(emailUsuario);
+        respuestasUsuario = [];
+        preguntaRealizada = [];
+      }
     } else {
       alert("Primero debes finalizar todas las preguntas..");
     }
