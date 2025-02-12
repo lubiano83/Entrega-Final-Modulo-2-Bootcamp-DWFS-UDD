@@ -92,7 +92,7 @@ const crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
   }
 };
 
-// Consultar preguntas
+// Consultar las distintas preguntas
 const consultarPreguntas = function() {
   try {
     if (preguntas.length === 0) document.getElementById("output").innerHTML = "<h3>No hay preguntas disponibles...</h3>"
@@ -106,7 +106,7 @@ const consultarPreguntas = function() {
   }
 };
 
-// Ver respuestas
+// Ver respuestas de una pregunta especifica
 const verRespuestas = () => {
   try {
     const numeroPregunta = parseInt(prompt("Ingresa el numero de la pregunta"));
@@ -122,7 +122,7 @@ const verRespuestas = () => {
   }
 };
 
-// Responder una pregunta
+// Responder una pregunta especifica
 const responderPregunta = () => {
   try {
     const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
@@ -147,7 +147,7 @@ const responderPregunta = () => {
   }
 };
 
-// Mostrar resultados de respuestas
+// Mostrar resultados de respuestas del usuario
 const mostrarResultadoRespuestas = () => {
   try {
     alert(`Hubo un total de ${countTrue} respuestas correctas y ${countFalse} de respuestas incorrectas, de un total de ${preguntas.length} preguntas..`);
@@ -161,7 +161,7 @@ const mostrarResultadoRespuestas = () => {
   }
 };
 
-// Mostrar las respuestas emitidas
+// Mostrar las respuestas emitidas por el usuario
 const mostrarRespuestasUsuario = () => {
   try {
     let respuesta = [];
@@ -175,6 +175,7 @@ const mostrarRespuestasUsuario = () => {
   }
 };
 
+// Enviar las pruebas y confirmar si ya se envio por el email
 const enviarPrueba = () => {
   try {
     if(respuestasUsuario.length === preguntas.length) {

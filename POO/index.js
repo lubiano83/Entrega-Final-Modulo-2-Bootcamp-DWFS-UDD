@@ -12,7 +12,7 @@ class Question {
         this.pruebaEnviada = [];
     }
 
-    // Crear pregunta
+    // Crear una pregunta
     crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
         try {
             if (!pregunta || respuestas.length === 0 || !respuestaCorrecta) return console.log("Todos los campos son necesarios");
@@ -24,7 +24,7 @@ class Question {
         }
     };
 
-    // Consultar preguntas
+    // Consultar las distintas preguntas
     consultarPreguntas = function() {
         try {
             if (this.preguntas.length === 0) document.getElementById("output").innerHTML = "<h3>No hay preguntas disponibles...</h3>"
@@ -38,7 +38,7 @@ class Question {
         }
     };
 
-    // Ver respuestas
+    // Ver respuestas de una pregunta especifica
     verRespuestas = () => {
         try {
             const numeroPregunta = parseInt(prompt("Ingresa el numero de la pregunta"));
@@ -54,7 +54,7 @@ class Question {
         }
     };
 
-    // Responder una pregunta
+    // Responder una pregunta especifica
     responderPregunta = () => {
         try {
             const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
@@ -79,7 +79,7 @@ class Question {
         }
     };
 
-    // Mostrar resultados de respuestas
+    // Mostrar resultados de respuestas del usuario
     mostrarResultadoRespuestas = () => {
         try {
             alert(`Hubo un total de ${this.#countTrue} respuestas correctas y ${this.#countFalse} de respuestas incorrectas, de un total de ${this.preguntas.length} preguntas..`);
@@ -93,7 +93,7 @@ class Question {
         }
     };
     
-    // Mostrar las respuestas emitidas
+    // Mostrar las respuestas emitidas por el usuario
     mostrarRespuestasUsuario = () => {
         try {
             let respuesta = [];
@@ -107,6 +107,7 @@ class Question {
         }
     };
 
+    // Enviar las pruebas y confirmar si ya se envio por el email
     enviarPrueba = () => {
         try {
             if(this.respuestasUsuario.length === this.preguntas.length) {
