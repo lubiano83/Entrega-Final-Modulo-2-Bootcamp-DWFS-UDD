@@ -1,8 +1,9 @@
 // Variables
 let countTrue = 0;
 let countFalse = 0;
-const preguntaRealizada = [];
-const respuestasUsuario = [];
+let preguntaRealizada = [];
+let respuestasUsuario = [];
+const pruebaEnviada = [];
 
 // Preguntas iniciales
 const preguntas = [
@@ -76,16 +77,6 @@ const preguntas = [
     ],
     respuestaCorrecta: "`await` solo puede usarse dentro de funciones `async`"
   },
-  {
-    pregunta: "¿Qué evento del DOM se usa para detectar cuando un usuario ha terminado de escribir en un input?",
-    respuestas: [
-      "keydown",
-      "keypress",
-      "keyup",
-      "input"
-    ],
-    respuestaCorrecta: "keyup"
-  }
 ];
 
 
@@ -185,10 +176,23 @@ const mostrarRespuestasUsuario = () => {
 };
 
 const enviarPrueba = () => {
-  if(respuestasUsuario.length === preguntas.length) {
-    alert("Prueba enviada con exito!!");
-  } else {
-    alert("Primero debes finalizar todas las preguntas..");
+  try {
+    if(respuestasUsuario.length === preguntas.length) {
+        const emailUsuario = prompt("Ingresa tu email para enviar la prueba");
+        const conffirmarEmail = pruebaEnviada.some(item => item === emailUsuario);
+        if(conffirmarEmail){
+          alert("Tu prueba ya se envio anteriormente..")
+        } else {
+          alert("Prueba enviada con exito!!");
+          pruebaEnviada.push(emailUsuario);
+          respuestasUsuario = [];
+          preguntaRealizada = [];
+        }
+    } else {
+      alert("Primero debes finalizar todas las preguntas..");
+    }
+  } catch (error) {
+      console.log(error.message);
   }
 };
 

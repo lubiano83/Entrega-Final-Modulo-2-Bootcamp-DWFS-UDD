@@ -9,6 +9,7 @@ class Question {
         this.preguntas = [];
         this.preguntaRealizada = [];
         this.respuestasUsuario = [];
+        this.pruebaEnviada = [];
     }
 
     // Crear pregunta
@@ -109,7 +110,16 @@ class Question {
     enviarPrueba = () => {
         try {
             if(this.respuestasUsuario.length === this.preguntas.length) {
-              alert("Prueba enviada con exito!!");
+                const emailUsuario = prompt("Ingresa tu email para enviar la prueba");
+                const conffirmarEmail = this.pruebaEnviada.some(item => item === emailUsuario);
+                if(conffirmarEmail){
+                    alert("Tu prueba ya se envio anteriormente..")
+                } else {
+                    this.pruebaEnviada.push(emailUsuario);
+                    this.respuestasUsuario = [];
+                    this.preguntaRealizada = [];
+                    alert("Prueba enviada con exito!!");
+                }
             } else {
               alert("Primero debes finalizar todas las preguntas..");
             }
