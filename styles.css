@@ -36,8 +36,15 @@ body div a button {
     border-radius: 10px;
     margin: 10px;
     color: #EB5A3C;
-    border: 2;
-    border-color: #EB5A3C;
+    border: 2px solid #EB5A3C;
     background-color: #E7D283;
     font-size: large;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+}
+
+body div a button:hover {
+    color: #E7D283;
+    border: 2px solid #E7D283;
+    background-color: #EB5A3C;
 }

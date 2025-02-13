@@ -52,9 +52,4 @@ body div .btn:hover {
     border: 2px solid #A9C46C;
     background-color: #5D8736;
     color: #A9C46C;
-    font-size: large;
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;
-    margin: 10px;
-    cursor: pointer;
 }
