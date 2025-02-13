@@ -175,6 +175,8 @@ const enviarPrueba = () => {
         pruebaEnviada.push(emailUsuario);
         respuestasUsuario = [];
         preguntaRealizada = [];
+        countTrue = 0;
+        countFalse = 0;
       }
     } else {
       alert("Primero debes finalizar todas las preguntas..");

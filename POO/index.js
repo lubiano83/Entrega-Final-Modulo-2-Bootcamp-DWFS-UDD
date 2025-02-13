@@ -106,6 +106,8 @@ class Question {
                     this.pruebaEnviada.push(emailUsuario);
                     this.respuestasUsuario = [];
                     this.preguntaRealizada = [];
+                    this.#countTrue = 0;
+                    this.#countFalse = 0;
                     alert("Prueba enviada con exito!!");
                 }
             } else {
