@@ -38,30 +38,17 @@ class Question {
         }
     };
 
-    // Ver respuestas de una pregunta especifica
-    verRespuestas = () => {
-        try {
-            const numeroPregunta = parseInt(prompt("Ingresa el numero de la pregunta"));
-            if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
-            const leerRespuestas = this.preguntas[numeroPregunta - 1].respuestas;
-            let respuesta = [];
-            for( let i = 0; i < leerRespuestas.length; i++ ) {
-                respuesta.push(` ${i+1}.- ${this.preguntas[numeroPregunta - 1].respuestas[i]}`);
-            }
-            alert(respuesta)
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
-
     // Responder una pregunta especifica
     responderPregunta = () => {
         try {
-            const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
+            const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta:"));
             const existePregunta = this.preguntaRealizada.some(num => num === numeroPregunta);
             if(existePregunta) return alert("Lo siento, esa pregunta ya se realizo..");
             if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > this.preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas.length}`);
-            const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
+            const leerRespuestas = this.preguntas[numeroPregunta - 1].respuestas;
+            let respuesta = [];
+            for( let i = 0; i < leerRespuestas.length; i++ ) respuesta.push(` ${i+1}.- ${this.preguntas[numeroPregunta - 1].respuestas[i]} \n`);
+            const numeroRespuesta = parseInt(prompt(`Ingrese el numero de la respuesta: \n\n ${respuesta}`));
             if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > this.preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas[numeroPregunta - 1].respuestas.length}`);
             const respuestaCorecta = this.preguntas[numeroPregunta - 1].respuestaCorrecta;
             const respuestaUsuario = this.preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
@@ -149,7 +136,6 @@ question.crearPregunta("¿Cuál de estas afirmaciones sobre `let` y `var` es cor
 question.consultarPreguntas();
 
 // Conexion con HTML
-document.getElementById("verRespuestas").addEventListener("click", () => question.verRespuestas());
 document.getElementById("responderPregunta").addEventListener("click", () => question.responderPregunta());
 document.getElementById("resultadoRespuestas").addEventListener("click", () => question.mostrarResultadoRespuestas());
 document.getElementById("respuestasUsuario").addEventListener("click", () => question.mostrarRespuestasUsuario());

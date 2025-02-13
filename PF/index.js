@@ -106,30 +106,17 @@ const consultarPreguntas = function() {
   }
 };
 
-// Ver respuestas de una pregunta especifica
-const verRespuestas = () => {
-  try {
-    const numeroPregunta = parseInt(prompt("Ingresa el numero de la pregunta"));
-    if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
-    const leerRespuestas = preguntas[numeroPregunta - 1].respuestas;
-    let respuesta = [];
-    for( let i = 0; i < leerRespuestas.length; i++ ) {
-      respuesta.push(` ${i+1}.- ${preguntas[numeroPregunta - 1].respuestas[i]}`);
-    }
-    alert(respuesta)
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
 // Responder una pregunta especifica
 const responderPregunta = () => {
   try {
-    const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta"));
+    const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta:"));
     const existePregunta = preguntaRealizada.some(num => num === numeroPregunta);
     if(existePregunta) return alert("Lo siento, esa pregunta ya se realizo..");
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
-    const numeroRespuesta = parseInt(prompt("Ingrese el numero de la respuesta"));
+    const leerRespuestas = preguntas[numeroPregunta - 1].respuestas;
+    let respuesta = [];
+    for( let i = 0; i < leerRespuestas.length; i++ ) respuesta.push(` ${i+1}.- ${preguntas[numeroPregunta - 1].respuestas[i]} \n`);
+    const numeroRespuesta = parseInt(prompt(`Ingrese el numero de la respuesta: \n\n ${respuesta}`));
     if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}`);
     const respuestaCorecta = preguntas[numeroPregunta - 1].respuestaCorrecta;
     const respuestaUsuario = preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
@@ -206,7 +193,6 @@ crearPregunta("¿Qué evento del DOM se usa para detectar cuando un usuario ha t
 consultarPreguntas();
 
 // Conexion con HTML
-document.getElementById("verRespuestas").addEventListener("click", () => verRespuestas());
 document.getElementById("responderPregunta").addEventListener("click", () => responderPregunta());
 document.getElementById("resultadoRespuestas").addEventListener("click", () => mostrarResultadoRespuestas());
 document.getElementById("respuestasUsuario").addEventListener("click", () => mostrarRespuestasUsuario());
