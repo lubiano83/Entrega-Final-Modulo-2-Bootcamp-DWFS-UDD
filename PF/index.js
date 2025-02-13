@@ -106,7 +106,7 @@ const consultarPreguntas = function() {
   }
 };
 
-// Responder una pregunta especifica
+// Responder una pregunta especifica y mostrar sus posibles respuestas
 const responderPregunta = () => {
   try {
     const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta:"));

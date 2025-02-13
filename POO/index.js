@@ -38,7 +38,7 @@ class Question {
         }
     };
 
-    // Responder una pregunta especifica
+    // Responder una pregunta especifica y mostrar sus posibles respuestas
     responderPregunta = () => {
         try {
             const numeroPregunta = parseInt(prompt("Ingrese el numero de la pregunta:"));
