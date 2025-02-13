@@ -48,7 +48,7 @@ class Question {
             const leerRespuestas = this.preguntas[numeroPregunta - 1].respuestas;
             let respuestaModificada = [];
             for( let i = 0; i < leerRespuestas.length; i++ ) respuestaModificada.push(` ${i+1}.- ${this.preguntas[numeroPregunta - 1].respuestas[i]} \n`);
-            const numeroRespuesta = parseInt(prompt(`Ingrese el numero de la respuesta: \n\n ${respuestaModificada}`));
+            const numeroRespuesta = parseInt(prompt(`Ingrese el numero de la respuesta: \n ${respuestaModificada}`));
             if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > this.preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${this.preguntas[numeroPregunta - 1].respuestas.length}`);
             const respuestaCorecta = this.preguntas[numeroPregunta - 1].respuestaCorrecta;
             const respuestaUsuario = this.preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];

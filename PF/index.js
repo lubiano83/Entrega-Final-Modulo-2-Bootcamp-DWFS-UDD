@@ -116,7 +116,7 @@ const responderPregunta = () => {
     const leerRespuestas = preguntas[numeroPregunta - 1].respuestas;
     let respuestaModificada = [];
     for( let i = 0; i < leerRespuestas.length; i++ ) respuestaModificada.push(` ${i+1}.- ${preguntas[numeroPregunta - 1].respuestas[i]} \n`);
-    const numeroRespuesta = parseInt(prompt(`Ingrese el numero de la respuesta: \n\n ${respuestaModificada}`));
+    const numeroRespuesta = parseInt(prompt(`Ingrese el numero de la respuesta: \n ${respuestaModificada}`));
     if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}`);
     const respuestaCorecta = preguntas[numeroPregunta - 1].respuestaCorrecta;
     const respuestaUsuario = preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
