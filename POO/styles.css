@@ -21,6 +21,12 @@ body #output {
     font-weight: lighter;
 }
 
+body #output h5 {
+    font-size: large;
+    margin-bottom: 30px;
+    font-weight: lighter;
+}
+
 body div {
     display: flex;
     flex-direction: row;

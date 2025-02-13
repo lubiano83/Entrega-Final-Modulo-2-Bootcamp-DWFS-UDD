@@ -95,7 +95,7 @@ const crearPregunta = (pregunta, respuestas, respuestaCorrecta) => {
 // Consultar las distintas preguntas
 const consultarPreguntas = function() {
   try {
-    if (preguntas.length === 0) document.getElementById("output").innerHTML = "<h3>No hay preguntas disponibles...</h3>"
+    if (preguntas.length === 0) return document.getElementById("output").innerHTML = "<h5>No hay preguntas disponibles...</h5>"
     let pregunta = [];
     for( let i = 0; i < preguntas.length; i++ ) {
       pregunta.push(`${i+1}.- ${preguntas[i].pregunta}`);

@@ -27,7 +27,7 @@ class Question {
     // Consultar las distintas preguntas
     consultarPreguntas = function() {
         try {
-            if (this.preguntas.length === 0) document.getElementById("output").innerHTML = "<h3>No hay preguntas disponibles...</h3>"
+            if (this.preguntas.length === 0) return document.getElementById("output").innerHTML = "<h5>No hay preguntas disponibles...</h5>"
             let pregunta = [];
             for( let i = 0; i < this.preguntas.length; i++ ) {
                 pregunta.push(`${i+1}.- ${this.preguntas[i].pregunta}`);
