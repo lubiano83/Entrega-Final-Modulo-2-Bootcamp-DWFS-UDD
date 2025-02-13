@@ -114,9 +114,9 @@ const responderPregunta = () => {
     if(existePregunta) return alert("Lo siento, esa pregunta ya se realizo..");
     if(!numeroPregunta || typeof numeroPregunta !== "number" || numeroPregunta < 1 || numeroPregunta > preguntas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas.length}`);
     const leerRespuestas = preguntas[numeroPregunta - 1].respuestas;
-    let respuesta = [];
-    for( let i = 0; i < leerRespuestas.length; i++ ) respuesta.push(` ${i+1}.- ${preguntas[numeroPregunta - 1].respuestas[i]} \n`);
-    const numeroRespuesta = parseInt(prompt(`Ingrese el numero de la respuesta: \n\n ${respuesta}`));
+    let respuestaModificada = [];
+    for( let i = 0; i < leerRespuestas.length; i++ ) respuestaModificada.push(` ${i+1}.- ${preguntas[numeroPregunta - 1].respuestas[i]} \n`);
+    const numeroRespuesta = parseInt(prompt(`Ingrese el numero de la respuesta: \n\n ${respuestaModificada}`));
     if(!numeroRespuesta || typeof numeroRespuesta !== "number" || numeroRespuesta < 1 || numeroRespuesta > preguntas[numeroPregunta - 1].respuestas.length) return alert(`Debe colocar un numero entero mayor que 0 y menor o igual que ${preguntas[numeroPregunta - 1].respuestas.length}`);
     const respuestaCorecta = preguntas[numeroPregunta - 1].respuestaCorrecta;
     const respuestaUsuario = preguntas[numeroPregunta - 1].respuestas[numeroRespuesta - 1];
