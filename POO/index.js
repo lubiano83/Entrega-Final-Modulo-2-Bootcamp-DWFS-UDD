@@ -84,9 +84,7 @@ class Question {
     mostrarRespuestasUsuario = () => {
         try {
             let respuesta = [];
-            for( let i = 0; i < this.respuestasUsuario.length; i++ ) {
-                respuesta.push(` ${i+1}.- ${this.respuestasUsuario[i]}`);
-            }
+            for( let i = 0; i < this.respuestasUsuario.length; i++ ) respuesta.push(` ${i+1}.- ${this.respuestasUsuario[i]} \n`);
             if(respuesta.length === 0) return alert("Aun no respondes ninguna pregunta..");
             alert(respuesta);
         } catch (error) {
