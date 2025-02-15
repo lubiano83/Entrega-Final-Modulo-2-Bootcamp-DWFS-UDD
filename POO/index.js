@@ -99,9 +99,9 @@ class Question {
                 const emailUsuario = prompt("Ingresa tu email para enviar la prueba");
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(emailUsuario)) return alert("Debes ingresar un email válido..");
-                const conffirmarEmail = this.pruebaEnviada.some(item => item === emailUsuario);
-                if(conffirmarEmail){
-                    alert("Tu prueba ya se envio anteriormente..")
+                const confirmarEmail = this.pruebaEnviada.some(item => item === emailUsuario);
+                if(confirmarEmail){
+                    alert("Tu prueba ya se envio anteriormente..");
                 } else {
                     this.pruebaEnviada.push(emailUsuario);
                     this.respuestasUsuario = [];

@@ -167,8 +167,8 @@ const enviarPrueba = () => {
       const emailUsuario = prompt("Ingresa tu email para enviar la prueba");
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(emailUsuario)) return alert("Debes ingresar un email válido..");
-      const conffirmarEmail = pruebaEnviada.some(item => item === emailUsuario);
-      if(conffirmarEmail){
+      const confirmarEmail = pruebaEnviada.some(item => item === emailUsuario);
+      if(confirmarEmail){
         alert("Tu prueba ya se envio anteriormente..")
       } else {
         alert("Prueba enviada con exito!!");
